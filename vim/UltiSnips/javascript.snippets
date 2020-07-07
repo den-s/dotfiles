@@ -1,0 +1,121 @@
+snippet rclass "React class"
+class $1 extends ${2:React.PureComponent} {
+  render = () => {
+    return (${3:<div>$1</div>})
+  }
+}
+endsnippet
+
+snippet rfunc "React function"
+import React from 'react'
+
+export const $1 = () => {
+	return ${2: null}
+}
+endsnippet
+
+snippet ir "Import react & Prop.types"
+import React from 'react'$1
+import PropTypes from 'prop-types'$1
+endsnippet
+
+snippet ir; "Import react & Prop.types + ;"
+import React from 'react';
+import PropTypes from 'prop-types';
+endsnippet
+
+snippet rexpr "React HTML expression"
+{$1 ? (
+  $2
+) : ${3:null}}
+endsnippet
+
+snippet cl "Console log extended"
+console.log('$1 ====> ', $1)
+endsnippet
+
+snippet clr "Console log for reactotron"
+console.tron.display({value: $1, name: '$1 ====> '})
+endsnippet
+
+snippet cl; "Console log extended + ;"
+console.log('$1 ====> ', $1);
+endsnippet
+
+snippet cw "console.warn()"
+console.warn($1)
+endsnippet
+
+snippet cw; "console.warn();"
+console.warn($1);
+endsnippet
+
+snippet ci "console.info()"
+console.info($1)
+endsnippet
+
+snippet ci; "console.info();"
+console.info($1);
+endsnippet
+
+snippet timeout "setTimeout function"
+setTimeout(() => {
+  $2
+}, ${1:1})$3
+endsnippet
+
+snippet timeout; "setTimeout function + ;"
+setTimeout(() => {
+  $2;
+}, ${1:1});
+endsnippet
+
+snippet pt "PropTypes"
+static propTypes = {
+  $1: PropTypes.$2,
+}
+endsnippet
+
+snippet dp "DefaultProps"
+static defaultProps = {
+  $1: $2,
+}
+endsnippet
+
+snippet cp "const {} = this.props"
+const { $1 } = this.props
+endsnippet
+
+snippet cp; "const {} = this.props;"
+const { $1 } = this.props;
+endsnippet
+
+snippet cs "const { | } = this.state"
+const { $1 } = this.state
+endsnippet
+
+snippet cs; "const { | } = this.state;"
+const { $1 } = this.state;
+endsnippet
+
+snippet im "import { | } from ''"
+import { $1 } from '$2'
+endsnippet
+
+snippet im; "import { | } from '';"
+import { $1 } from '$2';
+endsnippet
+
+snippet rns "import { StyleSheet } from 'react-native'"
+import { StyleSheet } from 'react-native'
+
+export default StyleSheet.create({$1})
+endsnippet
+
+snippet ims "Import Styles from './styles'"
+import Styles from './styles'
+endsnippet
+
+snippet ims; "Import Styles from './styles'"
+import Styles from './styles';
+endsnippet
