@@ -6,9 +6,10 @@ echo 'create symlincs'
 ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # Alacritty config
+mkdir -p ~/.config/alacritty/
 ln -s ~/dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # VIM config
-ln -s ~/.dotfiles/vim ~/.vim
+mkdir -p ~/.config/nvim/
 ln -s ~/.dotfiles/vim/init.vim ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/vim/init.vim ~/.vimrc
