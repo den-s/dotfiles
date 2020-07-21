@@ -184,6 +184,11 @@ set relativenumber
 vmap <tab> >gv
 vmap <s-tab> <gv
 
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
+vmap H <gv
+vmap L >gv
+
 nmap <c-h> :tabprevious<cr>
 nmap <c-l> :tabnext<cr>
 nmap <c-n> :tabnew<cr>
@@ -256,7 +261,7 @@ endif
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-unimpaired'
@@ -281,7 +286,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'chemzqm/vim-jsx-improve'
-Plug 'den-s/vim-context-commentstring'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
 if has('nvim')

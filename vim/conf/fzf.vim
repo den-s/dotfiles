@@ -15,7 +15,7 @@ let g:fzf_colors =
 
 let g:fzf_buffers_jump = 1
 
-nmap <leader>f :Files<cr>
+nmap ; :Files<cr>
 nmap <leader>fb :Buffers<CR>
 nmap <leader>fg :GFiles<CR>
 nmap <leader>fgs :GFiles?<CR>
