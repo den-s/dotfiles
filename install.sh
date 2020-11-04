@@ -23,3 +23,5 @@ ln -s ~/dotfiles/vim ~/.vim
 ln -s ~/dotfiles/vim/init.vim ~/.vimrc
 
 vim +PlugInstall +qall
+
+cd /usr/local/bin/ && ln -s /Users/den/dotfiles/tmux-session tmux-session

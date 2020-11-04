@@ -14,14 +14,20 @@ export const $1 = () => {
 }
 endsnippet
 
-snippet ir "Import react & Prop.types"
+snippet ir "Import react"
 import React from 'react'$1
-import PropTypes from 'prop-types'$1
 endsnippet
 
-snippet ir; "Import react & Prop.types + ;"
+snippet ir; "Import react with semicolon"
 import React from 'react';
-import PropTypes from 'prop-types';
+endsnippet
+
+snippet irn "Import items from react-native"
+import { $1 } from 'react-native'
+endsnippet
+
+snippet irn; "Import items from react-native with semicolon"
+import { $1 } from 'react-native';
 endsnippet
 
 snippet rexpr "React HTML expression"
@@ -112,10 +118,31 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({$1})
 endsnippet
 
-snippet ims "Import Styles from './styles'"
+snippet is "Import styles from './styles'"
+import styles from './styles'
+endsnippet
+
+snippet is; "Import styles from './styles'"
+import styles from './styles';
+endsnippet
+
+snippet iS "Import Styles from './styles'"
 import Styles from './styles'
 endsnippet
 
-snippet ims; "Import Styles from './styles'"
+snippet iS; "Import Styles from './styles'"
 import Styles from './styles';
 endsnippet
+
+snippet edm "Export default [index file]"
+import $1 from './$1'
+
+export default $1
+endsnippet
+
+snippet edm; "Export default [index file]"
+import $1 from './$1';
+
+export default $1;
+endsnippet
+	

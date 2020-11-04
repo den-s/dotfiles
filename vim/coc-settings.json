@@ -1,0 +1,16 @@
+{
+  "tsserver.tsdk": ".yarn/sdks/typescript/lib",
+  "eslint.packageManager": "yarn",
+  "eslint.nodePath": ".yarn/sdks",
+  "typescript.validate.enable": false,
+  "typescript.showUnused": false,
+  "javascript.format.enabled": false,
+  "suggest.maxCompleteItemCount": 10,
+  "languageserver": {
+    "tsserver": {
+      "module": "",
+      "disableDiagnostics": true,
+      "filetypes": ["typescript", "typescriptreact"]
+    }
+  }
+}

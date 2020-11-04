@@ -20,7 +20,6 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \  'fugitive': 'LightlineFugitive',
-      \  'githunks': 'LightlineHunks',
       \  'gitversion': 'LightLineGitversion',
       \  'ctrlpmark': 'CtrlPMark',
       \  'mode': 'LightlineMode',
@@ -35,6 +34,7 @@ let g:lightline = {
       \  'tabline_subseparator': { 'left': '', 'right': '' }
       \ }
 
+" \  'githunks': 'LightlineGitGutter',
 " \  'fileencoding': 'LightlineFileencoding',
 " \  'fileformat': 'LightlineFileformat',
 " \  'filetype': 'LightlineFiletype',
@@ -165,21 +165,29 @@ function! LightlineFilename()
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
-function! LightlineHunks()
-  let symbols = ['+', '-', '~']
-  let [added, modified, removed] = sy#repo#get_stats()
-  let stats = [added, removed, modified]  " reorder
-  let hunkline = ''
+" function! LightlineHunks()
+  " let symbols = ['+', '-', '~']
+  " let [added, modified, removed] = sy#repo#get_stats()
+  " let stats = [added, removed, modified]  " reorder
+  " let hunkline = ''
 
-  if stats != [-1, -1, -1]
-    for i in range(3)
-      let hunkline .= printf('%s%s ', symbols[i], stats[i])
-    endfor
-    return winwidth(0) > 70 ? (hunkline) : ''
-  endif
+  " if stats != [-1, -1, -1]
+    " for i in range(3)
+      " let hunkline .= printf('%s%s ', symbols[i], stats[i])
+    " endfor
+    " return winwidth(0) > 70 ? (hunkline) : ''
+  " endif
 
-  return ''
-endfunction
+  " return ''
+" endfunction
+
+" function! LightlineGitGutter()
+  " if !get(g:, 'gitgutter_enabled', 0) || empty(FugitiveHead())
+    " return ''
+  " endif
+  " let [ l:added, l:modified, l:removed ] = GitGutterGetHunkSummary()
+  " return printf('+%d ~%d -%d', l:added, l:modified, l:removed)
+" endfunction
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0

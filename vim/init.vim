@@ -77,6 +77,8 @@ set autoread
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+set ttyfast
+
 syntax sync minlines=256
 set foldnestmax=2
 
@@ -91,7 +93,6 @@ set foldmethod=syntax
 
 set list
 
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 set listchars=tab:▸·,extends:…,precedes:«,extends:»,trail:·,eol:¬
 let &showbreak = '↳ '
 
@@ -103,8 +104,6 @@ set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 
 let mapleader = ","
 let g:mapleader = ","
-nmap <leader>w :wa!<cr>
-nmap <leader>q :q<cr>
 
 set spelllang=ru_ru,en_us
 
@@ -117,12 +116,6 @@ function! ToggleSpellCheck()
     echo "Spellcheck is OFF"
   endif
 endfunction
-
-nnoremap <silent><Leader>ss :call ToggleSpellCheck()<CR>
-
-nmap <leader>6 :diffget LOCAL<cr>
-nmap <leader>7 :diffget BASE<cr>
-nmap <leader>8 :diffget REMOTE<cr>
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -172,34 +165,17 @@ set noswapfile
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,node_modules,venv,bower_components,*/.DS_Store
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+  set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 set laststatus=2
-set relativenumber
+" set relativenumber
 
 " Make tab in v mode work like I think it should (keep highlighting):
-vmap <tab> >gv
-vmap <s-tab> <gv
 
-vmap J :m '>+1<CR>gv=gv
-vmap K :m '<-2<CR>gv=gv
-vmap H <gv
-vmap L >gv
-
-nmap <c-h> :tabprevious<cr>
-nmap <c-l> :tabnext<cr>
-nmap <c-n> :tabnew<cr>
-nmap <leader>tc :tabclose<cr>
-
-nmap <Up> <C-W><Up>
-nmap <Down> <C-W><Down>
-nmap <Left> <C-W><Left>
-nmap <Right> <C-W><Right>
-
-set updatetime=100
+set updatetime=300
 
 " Better navigating through omnicomplete option list
 " See
@@ -216,13 +192,6 @@ function! OmniPopup(action)
     return a:action
 endfunction
 
-nmap <leader>rc :source ~/.config/nvim/init.vim<CR>
-
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-nmap <leader>rr :syntax on<CR> :syntax sync fromstart<CR>:redraw!<CR>
-
 function! g:ToggleBackground()
   if &background != 'dark'
     colorscheme gotham
@@ -232,20 +201,11 @@ function! g:ToggleBackground()
     set background=light
   endif
 endfunction
-nnoremap <leader>bg :call g:ToggleBackground()<CR>
-
-nnoremap <leader>tt2 :set tabstop=2 shiftwidth=2 expandtab<CR>
-nnoremap <leader>tt4 :set tabstop=4 shiftwidth=4 expandtab<CR>
 
 augroup vimrc
   autocmd!
   autocmd bufwritepost .vimrc source $MYVIMRC
 augroup end
-
-"ctags
-nmap <leader>] [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
-
 
 " For conceal markers.
 if has('conceal')
@@ -257,6 +217,63 @@ if has('nvim')
 else
   call plug#begin('~/.vim/plugins')
 endif
+
+" Mappings {
+nmap <leader>w :wa!<cr>
+
+nmap <leader>q :bd<cr>
+nmap <c-h> :tabprevious<cr>
+nmap <c-l> :tabnext<cr>
+nmap <c-n> :tabnew<cr>
+nmap <leader>tc :tabclose<cr>
+
+nmap <Up> <C-W><Up>
+nmap <Down> <C-W><Down>
+nmap <Left> <C-W><Left>
+nmap <Right> <C-W><Right>
+
+nmap <leader>tj :set ft=javascript<cr>
+nmap <leader>tjr :set ft=javascriptreact<cr>
+nmap <leader>tts :set ft=typescript<cr>
+
+nmap <leader>rc :source ~/.config/nvim/init.vim<CR>
+nmap <leader>rr :syntax on<CR> :syntax sync fromstart<CR>:redraw!<CR>
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent><Leader>ss :call ToggleSpellCheck()<CR>
+
+nnoremap <leader>bg :call g:ToggleBackground()<CR>
+
+nnoremap <leader>tt2 :set tabstop=2 shiftwidth=2 expandtab<CR>
+nnoremap <leader>tt4 :set tabstop=4 shiftwidth=4 expandtab<CR>
+
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+
+" ctags
+nmap <leader>] [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+" -------
+
+" diffs
+nmap <leader>6 :diffget LOCAL<cr>
+nmap <leader>7 :diffget BASE<cr>
+nmap <leader>8 :diffget REMOTE<cr>
+
+nmap <leader>gl :diffget //2<cr>
+nmap <leader>gr :diffget //3<cr>
+" -------
+
+vmap <tab> >gv
+vmap <s-tab> <gv
+
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '<-2<CR>gv=gv
+vmap H <gv
+vmap L >gv
+
+imap <C-p> <Nop>
+" }
 
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -271,12 +288,12 @@ Plug 'mileszs/ack.vim'
 Plug 'groenewege/vim-less'
 Plug 'diepm/vim-rest-console'
 Plug 'hesselbom/vim-hsftp'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'whatyouhide/vim-gotham'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'plasticboy/vim-markdown'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
@@ -284,18 +301,23 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
+" Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'chemzqm/vim-jsx-improve'
+" Plug 'chemzqm/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
 if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+  " Plug 'Shougo/defx.nvim'
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'roxma/vim-hug-neovim-rpc'
 endif
-"
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+Plug 'justinmk/vim-sneak'
+
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
@@ -305,6 +327,8 @@ function! BuildYCM(info)
     !./install.py --ts-completer
   endif
 endfunction
+
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
@@ -334,40 +358,33 @@ call plug#end()
 " }
 "
 " UltiSnips {
+  let g:UltiSnipsExpandTrigger="<C-l>"
+  let g:UltiSnipsJumpForwardTrigger="<C-l>"
+  let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+
   let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips/"
 " }
 
 source ~/.config/nvim/conf/nerdtree.vim
-
 source ~/.config/nvim/conf/pymode.vim
-
-source ~/.config/nvim/conf/gitgutter.vim
-
-source ~/.config/nvim/conf/easymotion.vim
-
-source ~/.config/nvim/conf/youcompleteme.vim
-
+" source ~/.config/nvim/conf/gitgutter.vim
+" source ~/.config/nvim/conf/easymotion.vim
 source ~/.config/nvim/conf/surround.vim
-
-source ~/.config/nvim/conf/multicursor.vim
-
+" source ~/.config/nvim/conf/multicursor.vim
+source ~/.config/nvim/conf/youcompleteme.vim
+" source ~/.config/nvim/conf/deoplete.vim
 source ~/.config/nvim/conf/vim-javascript.vim
-
 source ~/.config/nvim/conf/ale.vim
-
 source ~/.config/nvim/conf/lightline.vim
-
 source ~/.config/nvim/conf/signify.vim
-
 source ~/.config/nvim/conf/fzf.vim
-
 source ~/.config/nvim/conf/nerdcommenter.vim
-
-source ~/.config/nvim/conf/deoplete.vim
-
-source ~/.config/nvim/conf/delimmate.vim
-
-source ~/.config/nvim/conf/defx.vim
+" source ~/.config/nvim/conf/delimmate.vim
+" source ~/.config/nvim/conf/defx.vim
+source ~/.config/nvim/conf/auto-pairs.vim
+source ~/.config/nvim/conf/vim-viasual-multi.vim
+source ~/.config/nvim/conf/sneak.vim
+" source ~/.config/nvim/conf/coc.vim
 
 " } Plugins configs end
 "
