@@ -17,6 +17,10 @@ ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 mkdir -p ~/.config/alacritty/
 ln -s ~/dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
+# Alacritty config
+mkdir -p ~/.config/kitty/
+ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
 # VIM config
 ln -s ~/dotfiles/vim ~/.config/nvim
 ln -s ~/dotfiles/vim ~/.vim

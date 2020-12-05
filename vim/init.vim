@@ -89,7 +89,7 @@ set noerrorbells
 set novisualbell
 
 set foldcolumn=3
-set foldmethod=syntax
+set foldmethod=indent
 
 set list
 
@@ -288,8 +288,8 @@ Plug 'mileszs/ack.vim'
 Plug 'groenewege/vim-less'
 Plug 'diepm/vim-rest-console'
 Plug 'hesselbom/vim-hsftp'
-" Plug 'Raimondi/delimitMate'
-Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'whatyouhide/vim-gotham'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'altercation/vim-colors-solarized'
@@ -300,10 +300,10 @@ Plug 'SirVer/ultisnips'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'mhinz/vim-signify'
-" Plug 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/indentpython.vim'
-" Plug 'chemzqm/vim-jsx-improve'
+Plug 'chemzqm/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
 if has('nvim')
@@ -328,9 +328,9 @@ function! BuildYCM(info)
   endif
 endfunction
 
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -367,24 +367,26 @@ call plug#end()
 
 source ~/.config/nvim/conf/nerdtree.vim
 source ~/.config/nvim/conf/pymode.vim
-" source ~/.config/nvim/conf/gitgutter.vim
+source ~/.config/nvim/conf/gitgutter.vim
+" source ~/.config/nvim/conf/signify.vim
 " source ~/.config/nvim/conf/easymotion.vim
 source ~/.config/nvim/conf/surround.vim
 " source ~/.config/nvim/conf/multicursor.vim
-source ~/.config/nvim/conf/youcompleteme.vim
+" source ~/.config/nvim/conf/youcompleteme.vim
 " source ~/.config/nvim/conf/deoplete.vim
 source ~/.config/nvim/conf/vim-javascript.vim
 source ~/.config/nvim/conf/ale.vim
+" source ~/.config/nvim/conf/syntastic.vim
 source ~/.config/nvim/conf/lightline.vim
-source ~/.config/nvim/conf/signify.vim
 source ~/.config/nvim/conf/fzf.vim
 source ~/.config/nvim/conf/nerdcommenter.vim
-" source ~/.config/nvim/conf/delimmate.vim
+source ~/.config/nvim/conf/delimmate.vim
 " source ~/.config/nvim/conf/defx.vim
-source ~/.config/nvim/conf/auto-pairs.vim
+" source ~/.config/nvim/conf/auto-pairs.vim
 source ~/.config/nvim/conf/vim-viasual-multi.vim
 source ~/.config/nvim/conf/sneak.vim
-" source ~/.config/nvim/conf/coc.vim
+source ~/.config/nvim/conf/coc.vim
+" source ~/.config/nvim/conf/statusline.vim
 
 " } Plugins configs end
 "

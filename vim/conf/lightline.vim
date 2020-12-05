@@ -4,7 +4,7 @@ let g:lightline = {
       \    'left': [ [ 'mode', 'paste' ],
       \              [ 'fugitive', 'githunks', 'gitversion' ],
       \              [ 'filename', 'ctrlpmark' ] ],
-      \    'right': [ [ 'ale' ], [ 'percent', 'lineinfo' ],
+      \    'right': [ [ 'ale', 'ale_status' ], [ 'percent', 'lineinfo' ],
       \               [ 'filetype' ] ]
       \ },
       \  'inactive': {
@@ -25,6 +25,7 @@ let g:lightline = {
       \  'mode': 'LightlineMode',
       \  'filename': 'LightlineFilename',
       \  'ale': 'LightlineAle',
+      \  'ale_status': 'LintingInProgress',
       \  'modified': 'LightlineModified',
       \  'filetype': 'LightlineFiletype',
       \ },
@@ -57,6 +58,13 @@ let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
       \ 'right': [] }
 
+function! SubStr(str)
+  if strlen(a:str) > 22
+    return a:str[0:20].'...'
+  endif
+  return a:str
+endfunction
+
 function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
@@ -64,7 +72,7 @@ endfunction
 function! LightlineFugitive()
   if exists('*FugitiveHead')
     let branch = FugitiveHead()
-    return branch !=# '' && winwidth(0) > 60 ? ' '.branch : ''
+    return branch !=# '' && winwidth(0) > 60 ? ' '.SubStr(branch) : ''
   endif
   return ''
 endfunction
@@ -140,6 +148,14 @@ endfunction
 
 function! LightlineModified()
   return winwidth(0) > 70 ? (&modified > 0 ? '[+]' : '') : ''
+endfunction
+
+function! LintingInProgress()
+  if ale#engine#IsCheckingBuffer(bufnr('%'))
+    return ''
+  else
+    return '✔'
+    " return ''
 endfunction
 
 function! LightlineAle()
