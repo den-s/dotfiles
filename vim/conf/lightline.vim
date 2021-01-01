@@ -1,5 +1,5 @@
 let g:lightline = {
-      \ 'colorscheme': 'gotham',
+      \ 'colorscheme': 'Tomorrow_Night',
       \  'active': {
       \    'left': [ [ 'mode', 'paste' ],
       \              [ 'fugitive', 'githunks', 'gitversion' ],
@@ -152,7 +152,7 @@ endfunction
 
 function! LintingInProgress()
   if ale#engine#IsCheckingBuffer(bufnr('%'))
-    return ''
+    return '…'
   else
     return '✔'
     " return ''

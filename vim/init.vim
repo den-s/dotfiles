@@ -1,4 +1,4 @@
-" * * * * * * * * * * *
+""* * * * * * * * * * *
 " *   _______ ______  *
 " *  |  _____/ _____| *
 " *  | |    / /\      *
@@ -144,10 +144,10 @@ if has("gui_running")
 endif
 
 syntax enable
-colorscheme gotham
+colorscheme gruvbox8
 set background=dark
 
-set ambiwidth="double"
+" set ambiwidth="double"
 " set t_Co=256
 " set termguicolors
 
@@ -275,6 +275,11 @@ vmap L >gv
 imap <C-p> <Nop>
 " }
 
+Plug 'w0ng/vim-hybrid'
+Plug 'whatyouhide/vim-gotham'
+Plug 'arcticicestudio/nord-vim'
+Plug 'lifepillar/vim-gruvbox8'
+
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -283,16 +288,13 @@ Plug 'mattn/emmet-vim'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-unimpaired'
 Plug 'honza/vim-snippets'
-Plug 'w0ng/vim-hybrid'
 Plug 'mileszs/ack.vim'
 Plug 'groenewege/vim-less'
 Plug 'diepm/vim-rest-console'
 Plug 'hesselbom/vim-hsftp'
 Plug 'Raimondi/delimitMate'
 " Plug 'jiangmiao/auto-pairs'
-Plug 'whatyouhide/vim-gotham'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'altercation/vim-colors-solarized'
 Plug 'plasticboy/vim-markdown'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
@@ -306,10 +308,12 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
+Plug 'sheerun/vim-polyglot'
 if has('nvim')
   " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
+  " Plug 'Shougo/deoplete.nvim'
   " Plug 'Shougo/defx.nvim'
   " Plug 'roxma/nvim-yarp'
   " Plug 'roxma/vim-hug-neovim-rpc'
@@ -328,9 +332,9 @@ function! BuildYCM(info)
   endif
 endfunction
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -365,6 +369,7 @@ call plug#end()
   let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips/"
 " }
 
+source ~/.config/nvim/conf/gruvbox.vim
 source ~/.config/nvim/conf/nerdtree.vim
 source ~/.config/nvim/conf/pymode.vim
 source ~/.config/nvim/conf/gitgutter.vim
@@ -372,7 +377,7 @@ source ~/.config/nvim/conf/gitgutter.vim
 " source ~/.config/nvim/conf/easymotion.vim
 source ~/.config/nvim/conf/surround.vim
 " source ~/.config/nvim/conf/multicursor.vim
-" source ~/.config/nvim/conf/youcompleteme.vim
+source ~/.config/nvim/conf/youcompleteme.vim
 " source ~/.config/nvim/conf/deoplete.vim
 source ~/.config/nvim/conf/vim-javascript.vim
 source ~/.config/nvim/conf/ale.vim
@@ -385,7 +390,8 @@ source ~/.config/nvim/conf/delimmate.vim
 " source ~/.config/nvim/conf/auto-pairs.vim
 source ~/.config/nvim/conf/vim-viasual-multi.vim
 source ~/.config/nvim/conf/sneak.vim
-source ~/.config/nvim/conf/coc.vim
+source ~/.config/nvim/conf/nord.vim
+" source ~/.config/nvim/conf/coc.vim
 " source ~/.config/nvim/conf/statusline.vim
 
 " } Plugins configs end
