@@ -29,8 +29,8 @@ let g:lightline = {
       \  'modified': 'LightlineModified',
       \  'filetype': 'LightlineFiletype',
       \ },
-      \  'separator': { 'left': '', 'right': '' },
-      \  'subseparator': { 'left': '', 'right': '' },
+      \  'separator': { 'left': '', 'right': '' },
+      \  'subseparator': { 'left': '', 'right': '' },
       \  'tabline_separator': { 'left': '', 'right': '' },
       \  'tabline_subseparator': { 'left': '', 'right': '' }
       \ }
@@ -154,8 +154,8 @@ function! LintingInProgress()
   if ale#engine#IsCheckingBuffer(bufnr('%'))
     return '…'
   else
-    return '✔'
-    " return ''
+    return '✓'
+    " return '✔'
 endfunction
 
 function! LightlineAle()
