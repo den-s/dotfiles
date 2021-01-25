@@ -1,5 +1,5 @@
 let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
+      \ 'colorscheme': 'gruvbox',
       \  'active': {
       \    'left': [ [ 'mode', 'paste' ],
       \              [ 'fugitive', 'githunks', 'gitversion' ],
@@ -40,6 +40,8 @@ let g:lightline = {
 " \  'fileformat': 'LightlineFileformat',
 " \  'filetype': 'LightlineFiletype',
 " \  'subseparator': { 'left': '', 'right': '' },
+" \  'ale': 'LightlineAle',
+" \  'ale_status': 'LintingInProgress',
 let g:lightline.mode_map = {
       \ 'n' : 'N',
       \ 'i' : 'I',

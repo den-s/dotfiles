@@ -16,6 +16,7 @@ let g:ale_fix_on_save = 0
 " let g:ale_disable_lsp = 1
 
 nmap <leader>af :ALEFix<CR>
+nmap <leader>ad :ALEDetail<CR>
 
 " let g:ale_lint_on_text_changed = 'never'
 " let g:ale_lint_on_insert_leave = 0

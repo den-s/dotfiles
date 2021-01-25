@@ -279,6 +279,8 @@ Plug 'w0ng/vim-hybrid'
 Plug 'whatyouhide/vim-gotham'
 Plug 'arcticicestudio/nord-vim'
 Plug 'lifepillar/vim-gruvbox8'
+" Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -308,7 +310,7 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 if has('nvim')
   " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -352,13 +354,21 @@ call plug#end()
 
 " CtrlP {
   " nmap <C-i> :CtrlPLine<CR>
-  let g:ctrlp_user_command = 'rg --files %s'
-  nmap <C-b> :CtrlPBuffer<CR>
+  " let g:ctrlp_user_command = 'rg --files %s'
+  " nmap <C-b> :CtrlPBuffer<CR>
 " }
 
 " Emmet {
   let g:user_emmet_expandabbr_key='<c-\>'
   let g:user_emmet_mode='i'
+  let g:user_emmet_settings = {
+        \  'javascript' : {
+        \      'extends' : 'jsx',
+        \  },
+        \  'typescript' : {
+        \      'extends' : 'tsx',
+        \  },
+        \}
 " }
 "
 " UltiSnips {
@@ -367,6 +377,10 @@ call plug#end()
   let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
   let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips/"
+  "
+  " imap <C-l> <Plug>(coc-snippets-expand)
+  " let g:coc_snippet_next = '<c-l>'
+  " imap <C-l> <Plug>(coc-snippets-expand-jump)
 " }
 
 source ~/.config/nvim/conf/gruvbox.vim

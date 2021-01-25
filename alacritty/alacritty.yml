@@ -211,7 +211,7 @@ colors: *gruvbox_material_medium_dark
 
 window:
   dimensions:
-   columns: 120
+   columns: 50
    lines: 90
   padding:
     x: 0
@@ -229,16 +229,12 @@ background_opacity: 0.95
 font:
   normal:
     family: Input
-    style: Regular
   bold:
     family: Input
-    style: Bold
   italic:
     family: Input
-    style: Italic
   bolditalic:
     family: Input
-    style: Bold Italic
   size: 19.0
 
   offset:
@@ -261,7 +257,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: /bin/zsh
+  program: /opt/homebrew/bin/fish
   args:
     - -l
     - -c
