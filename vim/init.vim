@@ -310,6 +310,7 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
+Plug 'junegunn/goyo.vim'
 " Plug 'sheerun/vim-polyglot'
 if has('nvim')
   " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -323,6 +324,7 @@ endif
 " Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
 Plug 'justinmk/vim-sneak'
+" Plug 'neovim/nvim-lspconfig'
 
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
@@ -334,9 +336,9 @@ function! BuildYCM(info)
   endif
 endfunction
 
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -391,7 +393,7 @@ source ~/.config/nvim/conf/gitgutter.vim
 " source ~/.config/nvim/conf/easymotion.vim
 source ~/.config/nvim/conf/surround.vim
 " source ~/.config/nvim/conf/multicursor.vim
-source ~/.config/nvim/conf/youcompleteme.vim
+" source ~/.config/nvim/conf/youcompleteme.vim
 " source ~/.config/nvim/conf/deoplete.vim
 source ~/.config/nvim/conf/vim-javascript.vim
 source ~/.config/nvim/conf/ale.vim
@@ -405,8 +407,8 @@ source ~/.config/nvim/conf/delimmate.vim
 source ~/.config/nvim/conf/vim-viasual-multi.vim
 source ~/.config/nvim/conf/sneak.vim
 source ~/.config/nvim/conf/nord.vim
-" source ~/.config/nvim/conf/coc.vim
+source ~/.config/nvim/conf/coc.vim
+source ~/.config/nvim/conf/goyo.vim
 " source ~/.config/nvim/conf/statusline.vim
 
 " } Plugins configs end
-"
