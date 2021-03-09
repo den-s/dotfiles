@@ -1,0 +1,61 @@
+extends javascript
+
+snippet rclass "React class"
+class $1 extends ${2:React.PureComponent} {
+  render = () => {
+    return (${3:<div>$1</div>})${4:;}
+  }$4
+}$4
+endsnippet
+
+snippet rfunc "React function"
+import React from 'react'${3:;}
+
+export const $1 = () => {
+	return ${2: null}$3
+}$3
+endsnippet
+
+snippet rexpr "React HTML expression"
+{$1 ? (
+  $2
+) : ${3:null}}
+endsnippet
+
+snippet ir "Import react with semicolon"
+import React from 'react'${1:;}
+endsnippet
+
+snippet pt "PropTypes"
+static propTypes = {
+  $1: PropTypes.$2,
+}${3:;}
+endsnippet
+
+snippet dp "DefaultProps"
+static defaultProps = {
+  $1: $2,
+}${3:;}
+endsnippet
+
+snippet cp "const {} = this.props"
+const {$1} = this.props${2:;}
+endsnippet
+
+snippet cs "const {|} = this.state"
+const {$1} = this.state${2:;}
+endsnippet
+
+snippet useS "const [|, use] = useState<>();"
+const [$1, use${1/\w+\s*/\u$0/}] = useState${2:<${3:boolean}>}($4)${5:;}
+endsnippet
+
+snippet useE "useEffect()"
+useEffect(() => {
+  $1
+}${2:, [$3]})${4:;}
+endsnippet
+
+snippet useR "useRef()"
+const $1 = useRef${2:<$3>}($4)${5:;}
+endsnippet

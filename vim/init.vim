@@ -273,14 +273,21 @@ vmap H <gv
 vmap L >gv
 
 imap <C-p> <Nop>
+
+nmap <leader>r2 :vertical resize 30<cr>
+nmap <leader>r3 :vertical resize 40<cr>
+nmap <leader>r4 :vertical resize 50<cr>
+nmap <leader>r5 :vertical resize 60<cr>
+nmap <leader>r= :vertical resize +5<cr>
+nmap <leader>r- :vertical resize -5<cr>
+
+noremap <C-c> <C-a>
 " }
 
 Plug 'w0ng/vim-hybrid'
 Plug 'whatyouhide/vim-gotham'
 Plug 'arcticicestudio/nord-vim'
 Plug 'lifepillar/vim-gruvbox8'
-" Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -289,7 +296,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-unimpaired'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'mileszs/ack.vim'
 Plug 'groenewege/vim-less'
 Plug 'diepm/vim-rest-console'
@@ -301,7 +308,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 " Plug 'mhinz/vim-signify'
