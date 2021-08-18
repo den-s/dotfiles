@@ -1,9 +1,17 @@
+snippet ed "export default"
+export default
+endsnippet
+
+snippet if "if () {...}"
+if ($1) ${2:{$3}}
+endsnippet
+
 snippet clr "Console log for reactotron"
-console.tron.display({value: $1, name: '$1 ====> '})${2:;}
+console.tron.display({value: $1, name: '${1/\'\s*/"/g} ====> '})${2:;}
 endsnippet
 
 snippet cl "Console log extended"
-console.log('$1 ====> ', $1)${2:;}
+console.log('${1/\'\s*/"/g} ====> ', $1)${2:;}
 endsnippet
 
 snippet cw "console.warn();"
@@ -26,6 +34,14 @@ endsnippet
 
 snippet imd "import | from '';"
 import $1 from '$2'${3:;}
+endsnippet
+
+snippet imR "import ramda"
+import R from 'ramda';
+endsnippet
+
+snippet imM "import moment"
+import moment from 'moment';
 endsnippet
 
 snippet is "Import styles from './styles'"

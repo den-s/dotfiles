@@ -2,8 +2,8 @@ let g:ale_linters = {
 \   'python': ['pylint', 'flake8'],
 \   'javascript': ['eslint'],
 \   'javascriptreact': ['eslint'],
-\   'typescriptreact': ['tsserver', 'eslint'],
-\   'typescript': ['tsserver', 'eslint'],
+\   'typescriptreact': ['eslint'],
+\   'typescript': ['eslint'],
 \}
 
 let g:ale_fixers = {

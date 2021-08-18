@@ -13,18 +13,19 @@ call defx#custom#column('filename', {
       \ 'max_width': -90,
       \ })
 
-call defx#custom#column('git', 'indicators', {
-  \ 'Modified'  : '✹',
-  \ 'Staged'    : '✚',
-  \ 'Untracked' : '✭',
-  \ 'Renamed'   : '➜',
-  \ 'Unmerged'  : '═',
-  \ 'Ignored'   : '☒',
-  \ 'Deleted'   : '✖',
-  \ 'Unknown'   : '?'
-  \ })
+" call defx#custom#column('git', 'indicators', {
+  " \ 'Modified'  : '✹',
+  " \ 'Staged'    : '✚',
+  " \ 'Untracked' : '✭',
+  " \ 'Renamed'   : '➜',
+  " \ 'Unmerged'  : '═',
+  " \ 'Ignored'   : '☒',
+  " \ 'Deleted'   : '✖',
+  " \ 'Unknown'   : '?'
+  " \ })
 
-call defx#custom#column('git', 'column_length', 1)
+call defx#custom#column('column_length', 1)
+" call defx#custom#column('git', 'column_length', 1)
 
 
 autocmd FileType defx call s:defx_init()
@@ -94,17 +95,17 @@ function! s:defx_init()
         \ defx#do_action('change_vim_cwd')
   nnoremap <silent><buffer><expr> sv
         \ defx#do_action('drop', 'vsplit')
-  nnoremap <silent><buffer><expr> sg
+  nnoremap <silent><buffer><expr> sh
         \ defx#do_action('drop', 'split')
   nnoremap <silent><buffer><expr> st
         \ defx#do_action('drop', 'tabedit')
   nnoremap <silent><buffer><expr> p
         \ defx#do_action('open', 'pedit')
-  nnoremap <silent><buffer><expr> K
-        \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_file')
   nnoremap <silent><buffer><expr> d
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> dd
         \ defx#do_action('remove')
   nnoremap <silent><buffer><expr> r
         \ defx#do_action('rename')

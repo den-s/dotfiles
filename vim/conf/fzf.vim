@@ -15,6 +15,8 @@
 
 let g:fzf_buffers_jump = 1
 
+let $FZF_DEFAULT_OPTS = '--bind up:preview-up,down:preview-down'
+
 nmap ; :Files<cr>
 nmap <leader>fb :Buffers<CR>
 nmap <leader>fg :GFiles<CR>

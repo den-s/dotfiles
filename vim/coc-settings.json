@@ -5,5 +5,6 @@
   "javascript.format.enabled": false,
   "suggest.maxCompleteItemCount": 10,
   "diagnostic.displayByAle": true,
-  "coc.preferences.jumpCommand": "CocSplitIfNotOpen"
+  "coc.preferences.jumpCommand": "CocSplitIfNotOpen",
+  "diagnostic.virtualText": true
 }

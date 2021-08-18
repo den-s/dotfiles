@@ -94,7 +94,8 @@ set foldmethod=indent
 set list
 
 set listchars=tab:▸·,extends:…,precedes:«,extends:»,trail:·,eol:¬
-let &showbreak = '↳ '
+" let &showbreak = '↳ '
+let &showbreak = '↪ '
 
 set ffs=unix,dos,mac
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
@@ -144,7 +145,6 @@ if has("gui_running")
 endif
 
 syntax enable
-colorscheme gruvbox8
 set background=dark
 
 " set ambiwidth="double"
@@ -171,7 +171,7 @@ else
 endif
 
 set laststatus=2
-" set relativenumber
+set relativenumber
 
 " Make tab in v mode work like I think it should (keep highlighting):
 
@@ -180,7 +180,9 @@ set updatetime=300
 " Better navigating through omnicomplete option list
 " See
 " http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
+
 set completeopt=longest,menuone
+
 function! OmniPopup(action)
     if pumvisible()
         if a:action == 'j'
@@ -260,8 +262,8 @@ nmap <leader>6 :diffget LOCAL<cr>
 nmap <leader>7 :diffget BASE<cr>
 nmap <leader>8 :diffget REMOTE<cr>
 
-nmap <leader>gl :diffget //2<cr>
-nmap <leader>gr :diffget //3<cr>
+nmap <leader>g6 :diffget //2<cr>
+nmap <leader>g8 :diffget //3<cr>
 " -------
 
 vmap <tab> >gv
@@ -330,8 +332,13 @@ else
 endif
 " Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
-Plug 'justinmk/vim-sneak'
-" Plug 'neovim/nvim-lspconfig'
+" Plug 'justinmk/vim-sneak'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
@@ -343,11 +350,12 @@ function! BuildYCM(info)
   endif
 endfunction
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
+
 
 " Plugins configs {
 
@@ -412,10 +420,17 @@ source ~/.config/nvim/conf/delimmate.vim
 " source ~/.config/nvim/conf/defx.vim
 " source ~/.config/nvim/conf/auto-pairs.vim
 source ~/.config/nvim/conf/vim-viasual-multi.vim
-source ~/.config/nvim/conf/sneak.vim
+" source ~/.config/nvim/conf/sneak.vi1
 source ~/.config/nvim/conf/nord.vim
-source ~/.config/nvim/conf/coc.vim
+" source ~/.config/nvim/conf/coc.vim
 source ~/.config/nvim/conf/goyo.vim
 " source ~/.config/nvim/conf/statusline.vim
+" source /Users/den
+
+luafile ~/.config/nvim/conf/lsp-config.lua
+luafile ~/.config/nvim/conf/compe.lua
+luafile ~/.config/nvim/conf/telescope.lua
+
+colorscheme gruvbox8
 
 " } Plugins configs end
