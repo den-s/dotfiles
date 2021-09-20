@@ -284,6 +284,7 @@ nmap <leader>r= :vertical resize +5<cr>
 nmap <leader>r- :vertical resize -5<cr>
 
 noremap <C-c> <C-a>
+nmap <leader>dt :tab split<cr>
 " }
 
 Plug 'w0ng/vim-hybrid'

@@ -11,6 +11,10 @@ console.tron.display({value: $1, name: '${1/\'\s*/"/g} ====> '})${2:;}
 endsnippet
 
 snippet cl "Console log extended"
+console.log('$1 ====> ', $1)${2:;}
+endsnippet
+
+snippet cld "Console log with decorated string"
 console.log('${1/\'\s*/"/g} ====> ', $1)${2:;}
 endsnippet
 

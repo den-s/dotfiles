@@ -15,6 +15,13 @@ let NERDTreeSplitVertical   =   1                                   "and open as
 let NERDTreeChDirMode       =   2                                   "change working dir when I change root
 let NERDTreeShowBookmarks   =   0
 
+
+let NERDTreeDirArrowCollapsible = '▼'
+let NERDTreeDirArrowExpandable = '▶'
+
+" let NERDTreeDirArrowCollapsible = '└'
+" let NERDTreeDirArrowExpandable = '├'
+
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
