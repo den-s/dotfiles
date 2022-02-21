@@ -4,9 +4,10 @@ alias ll='ls -lah'
 alias v=nvim
 alias rnios11pm='command arch -x86_64 npx react-native run-ios --simulator "iPhone 11 Pro Max"'
 alias clean_node_modules='fish ~/dotfiles/fish/clean_node_modules.sh'
-alias rniosdevice='command arch -x86_64 npx react-native run-ios --device'
-alias rnios11='command arch -x86_64 npx react-native run-ios --simulator "iPhone 11"'
-alias rnios8='command arch -x86_64 npx react-native run-ios --simulator "iPhone 8"'
+alias rniosdevice='command npx react-native run-ios --device'
+alias rnios11='command npx react-native run-ios --simulator "iPhone 11"'
+alias rnios12='command npx react-native run-ios --simulator "iPhone 12"'
+alias rnios8='command npx react-native run-ios --simulator "iPhone 8"'
 
 set -xg PYTHONPATH /opt/homebrew/lib/python3.9
 
@@ -14,6 +15,7 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*" --glob
 set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x LANG en_US.UTF-8
 set -x LC_ALL $LANG
+set -gx EDITOR nvim
 
 set -x LFLAGS /opt/homebrew/lib/
 
@@ -26,6 +28,7 @@ set PATH $PATH $ANDROID_HOME/platform-tools
 set PATH $PATH $HOME/Software/ruby/bin
 
 set PATH $PATH /opt/homebrew/opt/ruby/bin
+set PATH $PATH /opt/homebrew/opt/node@14/bin
 set PATH $PATH /opt/homebrew/lib/ruby/gems/3.0.0/bin
 
 function ibrew --wraps brew --description 'brew for x86 packages'
@@ -120,7 +123,7 @@ end
 
 function fish_right_prompt -d "Write out the right prompt"
     set_color $fish_color_cwd
-    set -l git_branch (git branch ^/dev/null | sed -n '/\* /s///p')
+    set -l git_branch (git branch 2> /dev/null | sed -n '/\* /s///p')
     set -l local_date (date '+%d.%m.%y•%H:%M:%S')
     if test -n "$git_branch"
       # set delimiter ', '

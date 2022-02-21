@@ -94,14 +94,10 @@ set foldmethod=indent
 set list
 
 set listchars=tab:▸·,extends:…,precedes:«,extends:»,trail:·,eol:¬
-" let &showbreak = '↳ '
 let &showbreak = '↪ '
 
 set ffs=unix,dos,mac
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
-
-" Disable add a new lane at the end of the file
-" set numberwidth=2
 
 let mapleader = ","
 let g:mapleader = ","
@@ -118,38 +114,8 @@ function! ToggleSpellCheck()
   endif
 endfunction
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-  set guioptions-=T
-  set guioptions-=e
-  set guioptions-=m
-  set guioptions-=L
-  set guioptions-=r
-  set guioptions-=b
-  set guitablabel=%M\ %t
-  set guifont=Fira\ Code\ Light:h15
-  set linespace=3
-
-  if has('mac')
-    set macligatures
-    if system("osascript -e 'tell application \"Finder\" to get bounds of window of desktop' | cut -d ' ' -f 4") > 900
-      " set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h17
-      " set guifont=Hack\ Regular:h17
-      set guifont=Fira\ Code\ Light:h17
-    else
-      " set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h14
-      " set guifont=Hack\ Regular:h15
-      set guifont=Fira\ Code\ Light:h15
-    endif
-  endif
-endif
-
 syntax enable
 set background=dark
-
-" set ambiwidth="double"
-" set t_Co=256
-" set termguicolors
 
 " Enable if vim don't colorize
 " colorscheme hybrid
@@ -181,7 +147,7 @@ set updatetime=300
 " See
 " http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
 
-set completeopt=longest,menuone
+set completeopt=menu,menuone,noselect
 
 function! OmniPopup(action)
     if pumvisible()
@@ -192,16 +158,6 @@ function! OmniPopup(action)
         endif
     endif
     return a:action
-endfunction
-
-function! g:ToggleBackground()
-  if &background != 'dark'
-    colorscheme gotham
-    set background=dark
-  else
-    colorscheme lucius
-    set background=light
-  endif
 endfunction
 
 augroup vimrc
@@ -220,12 +176,17 @@ else
   call plug#begin('~/.vim/plugins')
 endif
 
+set termguicolors
+
 " Mappings {
 nmap <leader>w :wa!<cr>
 
 nmap <leader>q :bd<cr>
-nmap <c-h> :tabprevious<cr>
-nmap <c-l> :tabnext<cr>
+" nmap <c-h> :tabprevious<cr>
+" nmap <c-l> :tabnext<cr>
+" nmap <c-n> :tabnew<cr>
+nmap <c-h> :bp<cr>
+nmap <c-l> :bn<cr>
 nmap <c-n> :tabnew<cr>
 nmap <leader>tc :tabclose<cr>
 
@@ -243,8 +204,6 @@ nmap <leader>rr :syntax on<CR> :syntax sync fromstart<CR>:redraw!<CR>
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 nnoremap <silent><Leader>ss :call ToggleSpellCheck()<CR>
-
-nnoremap <leader>bg :call g:ToggleBackground()<CR>
 
 nnoremap <leader>tt2 :set tabstop=2 shiftwidth=2 expandtab<CR>
 nnoremap <leader>tt4 :set tabstop=4 shiftwidth=4 expandtab<CR>
@@ -292,14 +251,13 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'arcticicestudio/nord-vim'
 Plug 'lifepillar/vim-gruvbox8'
 
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'tpope/vim-unimpaired'
-" Plug 'honza/vim-snippets'
 Plug 'mileszs/ack.vim'
 Plug 'groenewege/vim-less'
 Plug 'diepm/vim-rest-console'
@@ -313,47 +271,34 @@ Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 " Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'chemzqm/vim-jsx-improve'
-Plug 'ap/vim-css-color'
+" Plug 'chemzqm/vim-jsx-improve'
+" Plug 'ap/vim-css-color'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/goyo.vim'
 " Plug 'sheerun/vim-polyglot'
-if has('nvim')
-  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  " Plug 'Shougo/deoplete.nvim'
-  " Plug 'Shougo/defx.nvim'
-  " Plug 'roxma/nvim-yarp'
-  " Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'justinmk/vim-sneak'
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-" Plug 'nvim-lua/completion-nvim'
+" Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py --ts-completer
-  endif
-endfunction
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'akinsho/bufferline.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'williamboman/nvim-lsp-installer'
 
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -368,12 +313,6 @@ call plug#end()
 
 " vim-rest-console {
   let g:vrc_show_command = 1
-" }
-
-" CtrlP {
-  " nmap <C-i> :CtrlPLine<CR>
-  " let g:ctrlp_user_command = 'rg --files %s'
-  " nmap <C-b> :CtrlPBuffer<CR>
 " }
 
 " Emmet {
@@ -400,38 +339,52 @@ call plug#end()
   " let g:coc_snippet_next = '<c-l>'
   " imap <C-l> <Plug>(coc-snippets-expand-jump)
 " }
+"
+" telescope {
+  nmap <leader>ff <cmd>Telescope find_files<cr>
+  nmap <leader>fg <cmd>Telescope live_grep<cr>
+  nmap <leader>fb <cmd>Telescope git_branches<cr>
+  nmap <leader>fc <cmd>Telescope git_bcommits<cr>
+  nmap <leader>fh <cmd>Telescope help_tags<cr>
+" }
+"
+" {
+  nmap <leader>tg :NvimTreeFindFileToggle<cr>
+  nmap <leader>tt :NvimTreeToggle<cr>
+" }
 
-source ~/.config/nvim/conf/gruvbox.vim
-source ~/.config/nvim/conf/nerdtree.vim
+" source ~/.config/nvim/conf/gruvbox.vim
+" source ~/.config/nvim/conf/nerdtree.vim
 source ~/.config/nvim/conf/pymode.vim
-source ~/.config/nvim/conf/gitgutter.vim
+" source ~/.config/nvim/conf/gitgutter.vim
 " source ~/.config/nvim/conf/signify.vim
 " source ~/.config/nvim/conf/easymotion.vim
 source ~/.config/nvim/conf/surround.vim
-" source ~/.config/nvim/conf/multicursor.vim
 " source ~/.config/nvim/conf/youcompleteme.vim
 " source ~/.config/nvim/conf/deoplete.vim
 source ~/.config/nvim/conf/vim-javascript.vim
 source ~/.config/nvim/conf/ale.vim
-" source ~/.config/nvim/conf/syntastic.vim
 source ~/.config/nvim/conf/lightline.vim
 source ~/.config/nvim/conf/fzf.vim
 source ~/.config/nvim/conf/nerdcommenter.vim
 source ~/.config/nvim/conf/delimmate.vim
-" source ~/.config/nvim/conf/defx.vim
 " source ~/.config/nvim/conf/auto-pairs.vim
 source ~/.config/nvim/conf/vim-viasual-multi.vim
-" source ~/.config/nvim/conf/sneak.vi1
 source ~/.config/nvim/conf/nord.vim
 " source ~/.config/nvim/conf/coc.vim
 source ~/.config/nvim/conf/goyo.vim
-" source ~/.config/nvim/conf/statusline.vim
-" source /Users/den
 
+luafile ~/.config/nvim/conf/cmp.lua
 luafile ~/.config/nvim/conf/lsp-config.lua
-luafile ~/.config/nvim/conf/compe.lua
 luafile ~/.config/nvim/conf/telescope.lua
+luafile ~/.config/nvim/conf/lualine.lua
+luafile ~/.config/nvim/conf/nvim-colorizer.lua
+luafile ~/.config/nvim/conf/gitsigns.lua
+luafile ~/.config/nvim/conf/bufferline.lua
+luafile ~/.config/nvim/conf/nvimtree.lua
+luafile ~/.config/nvim/conf/lsp-installer.lua
 
-colorscheme gruvbox8
+" colorscheme gruvbox8
+colorscheme tokyonight
 
 " } Plugins configs end

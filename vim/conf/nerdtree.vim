@@ -1,9 +1,9 @@
 "NERDTree options {{{
-nmap <leader>tt :NERDTreeToggle<cr>
-inoremap <F4> <Esc>:NERDTreeToggle<cr>
+" nmap <leader>tt :NERDTreeToggle<cr>
+" inoremap <F4> <Esc>:NERDTreeToggle<cr>
 
-nmap <leader>tg :NERDTreeFind<cr>
-inoremap <F5> <Esc>:NERDTreeFind<cr>
+" nmap <leader>tg :NERDTreeFind<cr>
+" inoremap <F5> <Esc>:NERDTreeFind<cr>
 
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif

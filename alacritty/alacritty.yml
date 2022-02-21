@@ -218,12 +218,12 @@ window:
     y: 0
   decorations: none
   startup_mode: Maximized
+  opacity: 0.95
+
 
 scrolling:
   history: 10000
   multiplier: 3
-
-background_opacity: 0.95
 
 # Font configuration
 font:

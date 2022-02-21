@@ -4,7 +4,7 @@ let g:lightline = {
       \    'left': [ [ 'mode', 'paste' ],
       \              [ 'fugitive', 'githunks', 'gitversion' ],
       \              [ 'filename', 'ctrlpmark' ] ],
-      \    'right': [ [ 'ale', 'ale_status' ], [ 'percent', 'lineinfo' ],
+      \    'right': [ [ 'percent', 'lineinfo' ],
       \               [ 'filetype' ] ]
       \ },
       \  'inactive': {
@@ -24,8 +24,6 @@ let g:lightline = {
       \  'ctrlpmark': 'CtrlPMark',
       \  'mode': 'LightlineMode',
       \  'filename': 'LightlineFilename',
-      \  'ale': 'LightlineAle',
-      \  'ale_status': 'LintingInProgress',
       \  'modified': 'LightlineModified',
       \  'filetype': 'LightlineFiletype',
       \ },
@@ -152,20 +150,20 @@ function! LightlineModified()
   return winwidth(0) > 70 ? (&modified > 0 ? '[+]' : '') : ''
 endfunction
 
-function! LintingInProgress()
-  if ale#engine#IsCheckingBuffer(bufnr('%'))
-    return '…'
-  else
-    return '✓'
-    " return '✔'
-endfunction
+" function! LintingInProgress()
+  " if ale#engine#IsCheckingBuffer(bufnr('%'))
+    " return '…'
+  " else
+    " return '✓'
+    " " return '✔'
+" endfunction
 
-function! LightlineAle()
-  let counts = ale#statusline#Count(bufnr(''))
-  let errors = counts.error > 0 ? 'E:'.counts.error : ''
-  let warnings = counts.warning > 0 ? (errors !=# '' ? ' W:'.counts.warning : 'W:'.counts.warning) : ''
-  return errors.warnings
-endfunction
+" function! LightlineAle()
+  " let counts = ale#statusline#Count(bufnr(''))
+  " let errors = counts.error > 0 ? 'E:'.counts.error : ''
+  " let warnings = counts.warning > 0 ? (errors !=# '' ? ' W:'.counts.warning : 'W:'.counts.warning) : ''
+  " return errors.warnings
+" endfunction
 
 function! LightlineFilename()
   let fname = expand('%:t')
