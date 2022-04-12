@@ -195,10 +195,6 @@ nmap <Down> <C-W><Down>
 nmap <Left> <C-W><Left>
 nmap <Right> <C-W><Right>
 
-nmap <leader>tj :set ft=javascript<cr>
-nmap <leader>tjr :set ft=javascriptreact<cr>
-nmap <leader>tts :set ft=typescript<cr>
-
 nmap <leader>rc :source ~/.config/nvim/init.vim<CR>
 nmap <leader>rr :syntax on<CR> :syntax sync fromstart<CR>:redraw!<CR>
 
@@ -262,12 +258,12 @@ Plug 'mileszs/ack.vim'
 Plug 'groenewege/vim-less'
 Plug 'diepm/vim-rest-console'
 Plug 'hesselbom/vim-hsftp'
-Plug 'Raimondi/delimitMate'
-" Plug 'jiangmiao/auto-pairs'
+" Plug 'Raimondi/delimitMate'
+Plug 'windwp/nvim-autopairs'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'plasticboy/vim-markdown'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -306,8 +302,8 @@ call plug#end()
 " Plugins configs {
 
 " Ack {
-  nmap <leader>a :tab split<CR>:Ack ""<left>
-  nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+  nmap <leader>a :Ack ""<left>
+  nmap <leader>A :Ack <C-r><C-w><CR>
   let g:ackprg = 'rg -S --no-heading --vimgrep'
 " }
 
@@ -362,8 +358,8 @@ source ~/.config/nvim/conf/pymode.vim
 source ~/.config/nvim/conf/surround.vim
 " source ~/.config/nvim/conf/youcompleteme.vim
 " source ~/.config/nvim/conf/deoplete.vim
-source ~/.config/nvim/conf/vim-javascript.vim
-source ~/.config/nvim/conf/ale.vim
+" source ~/.config/nvim/conf/vim-javascript.vim
+" source ~/.config/nvim/conf/ale.vim
 source ~/.config/nvim/conf/lightline.vim
 source ~/.config/nvim/conf/fzf.vim
 source ~/.config/nvim/conf/nerdcommenter.vim
@@ -383,6 +379,7 @@ luafile ~/.config/nvim/conf/gitsigns.lua
 luafile ~/.config/nvim/conf/bufferline.lua
 luafile ~/.config/nvim/conf/nvimtree.lua
 luafile ~/.config/nvim/conf/lsp-installer.lua
+luafile ~/.config/nvim/conf/autopairs.lua
 
 " colorscheme gruvbox8
 colorscheme tokyonight

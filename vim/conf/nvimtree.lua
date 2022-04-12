@@ -40,7 +40,7 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true,
+  auto_close = false,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
@@ -49,7 +49,7 @@ nvim_tree.setup {
     auto_open = true,
   },
   diagnostics = {
-    enable = true,
+    enable = false,
     icons = {
       hint = "",
       info = "",
@@ -88,7 +88,7 @@ nvim_tree.setup {
         { key = {"h", "x"}, cb = tree_cb "close_node" },
         { key = "v", cb = tree_cb "vsplit" },
         { key = "s", cb = tree_cb "split" },
-        { key = "r", cb = tree_cb "refresh" },
+        { key = "R", cb = tree_cb "refresh" },
       },
     },
     number = false,

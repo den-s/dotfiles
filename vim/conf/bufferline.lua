@@ -1,10 +1,12 @@
-numbers = function(opts)
-  return string.format('%s·%s', opts.raise(opts.id), opts.lower(opts.ordinal))
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
+  return
 end
 
-require("bufferline").setup{
+bufferline.setup {
   options = {
     -- indicator_icon = '▎',
+    -- offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
@@ -15,6 +17,6 @@ require("bufferline").setup{
     separator_style = "thin",
     always_show_bufferline = false,
     show_tab_indicators = true,
-    numbers = numbers,
+    -- numbers = numbers,
   }
 }
