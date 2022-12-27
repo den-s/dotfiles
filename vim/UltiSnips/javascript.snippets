@@ -1,5 +1,9 @@
+snippet c "const { ... } = ..."
+const { $1 } = $2${3:;}
+endsnippet
+
 snippet ed "export default"
-export default
+export default $1${2:;}
 endsnippet
 
 snippet if "if () {...}"
@@ -10,12 +14,24 @@ snippet clr "Console log for reactotron"
 console.tron.display({value: $1, name: '${1/\'\s*/"/g} ====> '})${2:;}
 endsnippet
 
+snippet cl1 "Console log extended only 1 string"
+console.log('$1 ====> ')${2:;}
+endsnippet
+
 snippet cl "Console log extended"
 console.log('$1 ====> ', $1)${2:;}
 endsnippet
 
 snippet cld "Console log with decorated string"
 console.log('${1/\'\s*/"/g} ====> ', $1)${2:;}
+endsnippet
+
+snippet clj "Console log for JSON output"
+console.log('$1 ====> ', JSON.stringify($1, null, 2))${2:;}
+endsnippet
+
+snippet clb "Console log for boolean variable"
+console.log('$1 ====> ', $1 ? 'true' : 'false')${2:;}
 endsnippet
 
 snippet cw "console.warn();"
@@ -60,6 +76,6 @@ snippet try "try/catch"
 try {
   $1
 } catch (e) {
-  ${2:console.log(${3:'Error: ', }e)}
+  ${2:console.log(${3:'Error ====> ', }e)}
 }
 endsnippet

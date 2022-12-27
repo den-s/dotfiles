@@ -68,14 +68,34 @@ local progress = {
 
 local filename = {
   "filename",
+  -- path = 1,
   fmt = function(str)
     local resp = str:gsub("%[%+%]", " ●")
     return resp:gsub("%[%-%]", " ")
   end
 }
 
+local filepath = {
+  "filename",
+  path = 3,
+  fmt = function(str)
+    local resp = str:gsub("%[%+%]", " ●")
+    return resp:gsub("%[%-%]", " ")
+  end
+}
+
+local fileformat = {
+  'fileformat',
+  symbols = {
+    unix = '', -- e712
+    dos = '',  -- e70f
+    mac = '',  -- e711
+  }
+}
+
 lualine.setup({
 	options = {
+    theme = "catppuccin",
 		icons_enabled = true,
 		component_separators = { left = "", right = "" },
     section_separators = { left = '', right = '' },
@@ -88,14 +108,14 @@ lualine.setup({
     lualine_c = { filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_x = { diagnostics },
-    lualine_y = { filetype },
-lualine_z = { location, progress },
+    lualine_y = { filetype, fileformat },
+    lualine_z = { location, progress },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-    lualine_c = { filename },
-		lualine_x = { "location" },
+    lualine_c = { filepath },
+		lualine_x = {},
 		lualine_y = {},
 		lualine_z = {},
 	},

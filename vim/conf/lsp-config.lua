@@ -18,11 +18,12 @@ local function goto_definition(split_cmd)
     if vim.tbl_islist(result) then
       util.jump_to_location(result[1])
 
-      if #result > 1 then
-        util.set_qflist(util.locations_to_items(result))
-        api.nvim_command("copen")
-        api.nvim_command("wincmd p")
-      end
+      -- if #result > 1 then
+        -- setqflist(util.locations_to_items(result))
+        -- -- util.set_qflist(util.locations_to_items(result))
+        -- api.nvim_command("copen")
+        -- api.nvim_command("wincmd p")
+      -- end
     else
       util.jump_to_location(result)
     end
@@ -41,6 +42,14 @@ function open_definition_newtab ()
   local handler = goto_definition('tab split')
   local params = vim.lsp.util.make_position_params()
   vim.lsp.buf_request(0, 'textDocument/definition', params, handler)
+end
+
+
+function toggle_theme ()
+  local flvr = vim.g.catppuccin_flavour
+  if flvr == "latte" then
+    -- return require("catppuccin.core.palettes.mocha")
+  end
 end
 
 local signs = {
@@ -86,7 +95,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -100,11 +109,46 @@ local function lsp_highlight_document(client)
   end
 end
 
+-- local lsp_formatting = function(bufnr)
+  -- vim.lsp.buf.format({
+    -- filter = function(clients)
+      -- -- filter out clients that you don't want to use
+      -- return vim.tbl_filter(function(client)
+        -- return client.name ~= "tsserver"
+      -- end, clients)
+    -- end,
+    -- bufnr = bufnr,
+  -- })
+-- end
+
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+        -- apply whatever logic you want (in this example, we'll only use null-ls)
+        return client.name == "null-ls"
+    end,
+    bufnr = bufnr,
+  })
+end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                lsp_formatting(bufnr)
+            end,
+        })
+    end
 
   lsp_highlight_document(client)
 
@@ -115,6 +159,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'tt', '<Cmd>lua toggle_theme()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gdv', '<Cmd>lua open_definition_vsplit()<CR>', opts)
@@ -132,7 +177,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap("n", "<leader>af", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
@@ -141,11 +186,12 @@ local eslint = {
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
   lintIgnoreExitCode = true,
-  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename ${INPUT}",
-  formatStdin = true
+  -- formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename ${INPUT}",
+  -- formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}",
+  -- formatStdin = true
 }
 
-local servers = { "cssls", "jsonls", "html", "tsserver" }
+local servers = { "cssls", "jsonls", "html", "tsserver", "pylsp" }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -156,24 +202,46 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-nvim_lsp.efm.setup {
-  on_attach = on_attach,
-  settings = {
-    languages = {
-      javascript = {eslint},
-      javascriptreact = {eslint},
-      ["javascript.jsx"] = {eslint},
-      typescript = {eslint},
-      ["typescript.tsx"] = {eslint},
-      typescriptreact = {eslint}
-    }
-  },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescript.tsx",
-    "typescriptreact"
-  },
-}
+--
+-- nvim_lsp.pylsp.setup({
+--     on_attach = on_attach,
+--     settings = {
+--       pylsp = {
+--         plugins = {
+--           pylint = { enabled = true, executable = "pylint" },
+--           pyflakes = { enabled = false },
+--           pycodestyle = { enabled = false },
+--           jedi_completion = { fuzzy = true },
+--           pyls_isort = { enabled = true },
+--           pylsp_mypy = { enabled = true },
+--         },
+--       },
+--     },
+--     flags = {
+--       debounce_text_changes = 200,
+--     },
+--     -- capabilities = capabilities,
+--   })
+
+-- nvim_lsp.efm.setup {
+  -- on_attach = on_attach,
+  -- root_dir = nvim_lsp.util.root_pattern("yarn.lock", "node_modules", ".git"),
+  -- settings = {
+    -- languages = {
+      -- javascript = {eslint},
+      -- javascriptreact = {eslint},
+      -- ["javascript.jsx"] = {eslint},
+      -- typescript = {eslint},
+      -- ["typescript.tsx"] = {eslint},
+      -- typescriptreact = {eslint}
+    -- }
+  -- },
+  -- filetypes = {
+    -- "javascript",
+    -- "javascriptreact",
+    -- "javascript.jsx",
+    -- "typescript",
+    -- "typescript.tsx",
+    -- "typescriptreact"
+  -- },
+-- }

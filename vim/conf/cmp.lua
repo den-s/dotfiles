@@ -1,5 +1,8 @@
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+	return
+end
 
 local kind_icons = {
   Text = "",
@@ -42,10 +45,11 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-y>'] = cmp.mapping.confirm({ select = false }),
     ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif has_words_before() then
+      elseif cmp.has_words_before() then
         cmp.complete()
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
@@ -83,8 +87,10 @@ cmp.setup({
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  window = {
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
   },
   experimental = {
     ghost_text = false,
@@ -92,11 +98,11 @@ cmp.setup({
   },
 })
 
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
+-- cmp.setup.cmdline('/', {
+  -- sources = {
+    -- { name = 'buffer' }
+  -- }
+-- })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
@@ -108,6 +114,6 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
-require('lspconfig')['tsserver'].setup {
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
+-- require('lspconfig')['tsserver'].setup {
+  -- capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- }

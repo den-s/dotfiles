@@ -14,9 +14,12 @@ bufferline.setup {
     right_trunc_marker = '',
     show_buffer_close_icons = false,
     show_close_icon = false,
-    separator_style = "thin",
+    separator_style = {"", ""},
     always_show_bufferline = false,
     show_tab_indicators = true,
     -- numbers = numbers,
   }
 }
+local opts = { noremap=true, silent=true }
+
+vim.api.nvim_buf_set_keymap(0, 'n','gb', '<Cmd>BufferLinePick<CR>', opts)

@@ -16,8 +16,11 @@ set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x LANG en_US.UTF-8
 set -x LC_ALL $LANG
 set -gx EDITOR nvim
+# set -x JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
+set -x JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-13.jdk/Contents/Home
 
 set -x LFLAGS /opt/homebrew/lib/
+# set -x CFLAGS = -g -Wall -Wextra -pedantic -Werror -target x86_64-apple-darwin20.3.0
 
 set PATH /opt/homebrew/bin $PATH
 
@@ -25,11 +28,18 @@ set PATH $PATH $ANDROID_HOME/emulator
 set PATH $PATH $ANDROID_HOME/tools
 set PATH $PATH $ANDROID_HOME/tools/bin
 set PATH $PATH $ANDROID_HOME/platform-tools
+
 set PATH $PATH $HOME/Software/ruby/bin
 
 set PATH $PATH /opt/homebrew/opt/ruby/bin
 set PATH $PATH /opt/homebrew/opt/node@14/bin
 set PATH $PATH /opt/homebrew/lib/ruby/gems/3.0.0/bin
+set PATH $PATH $JAVA_HOME
+set PATH $PATH /opt/homebrew/Cellar/maven/3.8.5/libexec
+
+# export NVM_DIR="$HOME/.nvm"
+#   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+#   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 function ibrew --wraps brew --description 'brew for x86 packages'
     arch --x86_64 /usr/local/bin/brew $argv
@@ -135,3 +145,6 @@ function fish_right_prompt -d "Write out the right prompt"
     printf '%s%s' $delimiter $git_branch
 end
 set -g fish_user_paths "/opt/homebrew/opt/ruby/bin" $fish_user_paths
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/den/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/den/Downloads/google-cloud-sdk/path.fish.inc'; end

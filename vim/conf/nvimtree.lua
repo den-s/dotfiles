@@ -1,23 +1,4 @@
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
+-- [NvimTree] unknown option: quit_on_open | unknown option: git_hl | unknown option: disable_window_picker | unknown option: auto_close | unknown option: view.auto_resize | unknown option: update_to_buf_dir | unknown option: show_icons | unknown option: root_folder_modifier
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -40,16 +21,11 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = false,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
-  update_to_buf_dir = {
-    enable = true,
-    auto_open = true,
-  },
   diagnostics = {
-    enable = false,
+    enable = true,
     icons = {
       hint = "",
       info = "",
@@ -75,19 +51,23 @@ nvim_tree.setup {
     ignore = true,
     timeout = 500,
   },
+  actions = {
+    open_file = {
+      quit_on_open = false,
+      window_picker = {
+        enable = false,
+      }
+    },
+  },
   view = {
     width = 30,
-    height = 30,
     hide_root_folder = false,
     side = "left",
-    auto_resize = true,
     mappings = {
       custom_only = false,
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = {"h", "x"}, cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-        { key = "s", cb = tree_cb "split" },
+        { key = {"h"}, cb = tree_cb "close_node" },
         { key = "R", cb = tree_cb "refresh" },
       },
     },
@@ -98,15 +78,29 @@ nvim_tree.setup {
     cmd = "trash",
     require_confirm = true,
   },
-  quit_on_open = 0,
-  git_hl = 1,
-  disable_window_picker = 0,
-  root_folder_modifier = ":t",
-  show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-    tree_width = 30,
-  },
+  renderer = {
+    highlight_opened_files = "all",
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "U",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "?",
+          deleted = "",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+      }
+    }
+  }
 }

@@ -17,8 +17,10 @@ set splitbelow
 set splitright
 
 " Sets how many lines of history VIM has to remember
-set history=700
-set undolevels=700
+set history=300
+set undolevels=300
+
+set shada
 
 " Enable filetype plugins
 filetype plugin on
@@ -80,7 +82,12 @@ set lazyredraw
 set ttyfast
 
 syntax sync minlines=256
-set foldnestmax=2
+
+" Folding {
+" set foldnestmax=2
+" set foldcolumn=3
+" set foldmethod=indent
+" }
 
 " No annoying sound on errors
 set t_vb=
@@ -88,19 +95,17 @@ set tm=500
 set noerrorbells
 set novisualbell
 
-set foldcolumn=3
-set foldmethod=indent
-
 set list
 
-set listchars=tab:▸·,extends:…,precedes:«,extends:»,trail:·,eol:¬
+" set listchars=tab:▸·,extends:…,precedes:«,extends:»,trail:·,eol:¬
+set listchars=tab:▸·,extends:…,precedes:«,extends:»,trail:·
 let &showbreak = '↪ '
 
 set ffs=unix,dos,mac
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 set spelllang=ru_ru,en_us
 
@@ -116,9 +121,6 @@ endfunction
 
 syntax enable
 set background=dark
-
-" Enable if vim don't colorize
-" colorscheme hybrid
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> Files, backups and undo
@@ -198,7 +200,7 @@ nmap <Right> <C-W><Right>
 nmap <leader>rc :source ~/.config/nvim/init.vim<CR>
 nmap <leader>rr :syntax on<CR> :syntax sync fromstart<CR>:redraw!<CR>
 
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+" nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 nnoremap <silent><Leader>ss :call ToggleSpellCheck()<CR>
 
 nnoremap <leader>tt2 :set tabstop=2 shiftwidth=2 expandtab<CR>
@@ -277,6 +279,7 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/goyo.vim'
 " Plug 'sheerun/vim-polyglot'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 " Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -292,7 +295,11 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'williamboman/nvim-lsp-installer'
+" Plug 'williamboman/nvim-lsp-installer'
+Plug 'numToStr/Comment.nvim'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
@@ -360,13 +367,13 @@ source ~/.config/nvim/conf/surround.vim
 " source ~/.config/nvim/conf/deoplete.vim
 " source ~/.config/nvim/conf/vim-javascript.vim
 " source ~/.config/nvim/conf/ale.vim
-source ~/.config/nvim/conf/lightline.vim
+" source ~/.config/nvim/conf/lightline.vim
 source ~/.config/nvim/conf/fzf.vim
 source ~/.config/nvim/conf/nerdcommenter.vim
 source ~/.config/nvim/conf/delimmate.vim
 " source ~/.config/nvim/conf/auto-pairs.vim
 source ~/.config/nvim/conf/vim-viasual-multi.vim
-source ~/.config/nvim/conf/nord.vim
+" source ~/.config/nvim/conf/nord.vim
 " source ~/.config/nvim/conf/coc.vim
 source ~/.config/nvim/conf/goyo.vim
 
@@ -378,10 +385,13 @@ luafile ~/.config/nvim/conf/nvim-colorizer.lua
 luafile ~/.config/nvim/conf/gitsigns.lua
 luafile ~/.config/nvim/conf/bufferline.lua
 luafile ~/.config/nvim/conf/nvimtree.lua
-luafile ~/.config/nvim/conf/lsp-installer.lua
+" luafile ~/.config/nvim/conf/lsp-installer.lua
 luafile ~/.config/nvim/conf/autopairs.lua
+luafile ~/.config/nvim/conf/treesitter.lua
+luafile ~/.config/nvim/conf/comment.lua
+luafile ~/.config/nvim/conf/null-ls.lua
+luafile ~/.config/nvim/conf/catppuccin.lua
 
-" colorscheme gruvbox8
-colorscheme tokyonight
+" colorscheme catppuccin
 
 " } Plugins configs end

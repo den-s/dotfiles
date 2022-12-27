@@ -12,15 +12,15 @@ lsp_installer.on_server_ready(function (server)
   if server.name == "eslint" then
     local eslint_config = require("lspconfig.server_configurations.eslint")
     opts.cmd = vim.list_extend({"yarn", "node"}, eslint_config.default_config.cmd)
-    -- opts.on_attach = function (client, bufnr)
-      -- -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-      -- -- the resolved capabilities of the eslint server ourselves!
-      -- client.resolved_capabilities.document_formatting = true
-      -- common_on_attach(client, bufnr)
-    -- end
-    -- opts.settings = {
-      -- format = { enable = true }, -- this will enable formatting
-    -- }
+    opts.on_attach = function (client, bufnr)
+      -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+      -- the resolved capabilities of the eslint server ourselves!
+      client.resolved_capabilities.document_formatting = true
+      common_on_attach(client, bufnr)
+    end
+    opts.settings = {
+      format = { enable = true }, -- this will enable formatting
+    }
   end
 
   server:setup(opts)
