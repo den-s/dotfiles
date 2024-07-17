@@ -1,225 +1,39 @@
 schemes:
-  gruvbox_material_hard_dark: &gruvbox_material_hard_dark
-    primary:
-      background: '0x1d2021'
-      foreground: '0xd4be98'
-    normal:
-      black:   '0x32302f'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-    bright:
-      black:   '0x32302f'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
   gruvbox_material_medium_dark: &gruvbox_material_medium_dark
     primary:
-      background: '0x282828'
-      foreground: '0xd4be98'
+      background: "0x282828"
+      foreground: "0xd4be98"
     normal:
-      black:   '0x3c3836'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
+      black: "0x3c3836"
+      red: "0xea6962"
+      green: "0xa9b665"
+      yellow: "0xd8a657"
+      blue: "0x7daea3"
+      magenta: "0xd3869b"
+      cyan: "0x89b482"
+      white: "0xd4be98"
     bright:
-      black:   '0x3c3836'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-  gruvbox_material_soft_dark: &gruvbox_material_soft_dark
-    primary:
-      background: '0x32302f'
-      foreground: '0xd4be98'
-    normal:
-      black:   '0x45403d'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-    bright:
-      black:   '0x45403d'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xd8a657'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xd4be98'
-  gruvbox_material_hard_light: &gruvbox_material_hard_light
-    primary:
-      background: '0xf9f5d7'
-      foreground: '0x654735'
-    normal:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xf2e5bc'
-    bright:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xf2e5bc'
-  gruvbox_material_medium_light: &gruvbox_material_medium_light
-    primary:
-      background: '0xfbf1c7'
-      foreground: '0x654735'
-    normal:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xeee0b7'
-    bright:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xeee0b7'
-  gruvbox_material_soft_light: &gruvbox_material_soft_light
-    primary:
-      background: '0xf2e5bc'
-      foreground: '0x654735'
-    normal:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xe6d5ae'
-    bright:
-      black:   '0x654735'
-      red:     '0xc14a4a'
-      green:   '0x6c782e'
-      yellow:  '0xb47109'
-      blue:    '0x45707a'
-      magenta: '0x945e80'
-      cyan:    '0x4c7a5d'
-      white:   '0xe6d5ae'
-  nord: &nord
-    primary:
-      background: '#2e3440'
-      foreground: '#d8dee9'
-      dim_foreground: '#a5abb6'
-    cursor:
-      text: '#2e3440'
-      cursor: '#d8dee9'
-    vi_mode_cursor:
-      text: '#2e3440'
-      cursor: '#d8dee9'
-    selection:
-      text: CellForeground
-      background: '#4c566a'
-    search:
-      matches:
-        foreground: CellBackground
-        background: '#88c0d0'
-      bar:
-        background: '#434c5e'
-        foreground: '#d8dee9'
-    normal:
-      black: '#3b4252'
-      red: '#bf616a'
-      green: '#a3be8c'
-      yellow: '#ebcb8b'
-      blue: '#81a1c1'
-      magenta: '#b48ead'
-      cyan: '#88c0d0'
-      white: '#e5e9f0'
-    bright:
-      black: '#4c566a'
-      red: '#bf616a'
-      green: '#a3be8c'
-      yellow: '#ebcb8b'
-      blue: '#81a1c1'
-      magenta: '#b48ead'
-      cyan: '#8fbcbb'
-      white: '#eceff4'
-    dim:
-      black: '#373e4d'
-      red: '#94545d'
-      green: '#809575'
-      yellow: '#b29e75'
-      blue: '#68809a'
-      magenta: '#8c738c'
-      cyan: '#6d96a5'
-      white: '#aeb3bb'
-  gotham: &gotham
-    primary:
-      background: '0x0a0f14'
-      foreground: '0x98d1ce'
-
-    # Normal colors
-    normal:
-      black: '0x0a0f14'
-      red: '0xc33027'
-      green: '0x26a98b'
-      yellow: '0xedb54b'
-      blue: '0x195465'
-      magenta: '0x4e5165'
-      cyan: '0x33859d'
-      white: '0x98d1ce'
-
-    # Bright colors
-    bright:
-      black: '0x10151b'
-      red: '0xd26939'
-      green: '0x081f2d'
-      yellow: '0x245361'
-      blue: '0x093748'
-      magenta: '0x888ba5'
-      cyan: '0x599caa'
-      white: '0xd3ebe9'
+      black: "0x3c3836"
+      red: "0xea6962"
+      green: "0xa9b665"
+      yellow: "0xd8a657"
+      blue: "0x7daea3"
+      magenta: "0xd3869b"
+      cyan: "0x89b482"
+      white: "0xd4be98"
 
 colors: *gruvbox_material_medium_dark
 
-
 window:
   dimensions:
-   columns: 50
-   lines: 90
+    columns: 50
+    lines: 90
   padding:
     x: 0
     y: 0
   decorations: none
   startup_mode: Maximized
   opacity: 0.95
-
 
 scrolling:
   history: 10000
@@ -244,8 +58,6 @@ font:
     x: 0
     y: 0
 
-  use_thin_strokes: true
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
@@ -264,32 +76,32 @@ shell:
     - "tmux a -t console || tmux new -s console"
 
 mouse_bindings:
- - { mouse: Middle, action: PasteSelection }
+  - { mouse: Middle, action: PasteSelection }
 
 key_bindings:
-  - { key: V,      mods: Command,            action: Paste               }
-  - { key: C,      mods: Command,            action: Copy                }
-  - { key: Key0,   mods: Command,            action: ResetFontSize       }
-  - { key: Equals, mods: Command,            action: IncreaseFontSize    }
-  - { key: Plus,   mods: Command,            action: IncreaseFontSize    }
-  - { key: Minus,  mods: Command,            action: DecreaseFontSize    }
-  - { key: Q,      mods: Command,            action: Quit                }
-  - { key: N,      mods: Command|Shift,      action: SpawnNewInstance    }
-  - { key: J,      mods: Alt,                chars: "\x1bj"              }
-  - { key: K,      mods: Alt,                chars: "\x1bk"              }
-  - { key: H,      mods: Alt,                chars: "\x1bh"              }
-  - { key: L,      mods: Alt,                chars: "\x1bl"              }
-  - { key: P,      mods: Alt,                chars: "\x1bp"              }
-  - { key: E,      mods: Alt,                chars: "\x1be"              }
-  - { key: N,      mods: Alt,                chars: "\x1bn"              }
-  - { key: B,      mods: Alt,                chars: "\x1bb"              }
-  - { key: T,      mods: Alt,                action: ToggleSimpleFullscreen }
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: Key0, mods: Command, action: ResetFontSize }
+  - { key: Equals, mods: Command, action: IncreaseFontSize }
+  - { key: Plus, mods: Command, action: IncreaseFontSize }
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: Q, mods: Command, action: Quit }
+  - { key: N, mods: Command|Shift, action: SpawnNewInstance }
+  - { key: J, mods: Alt, chars: "\x1bj" }
+  - { key: K, mods: Alt, chars: "\x1bk" }
+  - { key: H, mods: Alt, chars: "\x1bh" }
+  - { key: L, mods: Alt, chars: "\x1bl" }
+  - { key: P, mods: Alt, chars: "\x1bp" }
+  - { key: E, mods: Alt, chars: "\x1be" }
+  - { key: N, mods: Alt, chars: "\x1bn" }
+  - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: T, mods: Alt, action: ToggleSimpleFullscreen }
 
-  - { key: Left,   mods: Alt,                chars: "\x1bb"              }
-  - { key: Right,  mods: Alt,                chars: "\x1bf"              }
-  - { key: Left,   mods: Command,            chars: "\x1bOH", mode: AppCursor   } # Home
-  - { key: Right,  mods: Command,            chars: "\x1bOF", mode: AppCursor   } # End
-  - { key: Back,   mods: Super,              chars: "\x15"               }
+  - { key: Left, mods: Alt, chars: "\x1bb" }
+  - { key: Right, mods: Alt, chars: "\x1bf" }
+  - { key: Left, mods: Command, chars: "\x1bOH", mode: AppCursor } # Home
+  - { key: Right, mods: Command, chars: "\x1bOF", mode: AppCursor } # End
+  - { key: Back, mods: Super, chars: "\x15" }
   # - { key: Back,     mods: Command, chars: "\x1b[f"  }
-  - { key: Back,   mods: Command,            chars: "\x1b\x7f"           }
-  - { key: F,      mods: Command|Control,    action: ToggleFullscreen    }
+  - { key: Back, mods: Command, chars: "\x1b\x7f" }
+  - { key: F, mods: Command|Control, action: ToggleFullscreen }

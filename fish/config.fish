@@ -36,6 +36,7 @@ set PATH $PATH /opt/homebrew/opt/node@14/bin
 set PATH $PATH /opt/homebrew/lib/ruby/gems/3.0.0/bin
 set PATH $PATH $JAVA_HOME
 set PATH $PATH /opt/homebrew/Cellar/maven/3.8.5/libexec
+set PATH $PATH /Users/den/.local/share/nvim/mason/bin
 
 # export NVM_DIR="$HOME/.nvm"
 #   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -131,20 +132,26 @@ function fish_prompt --description 'Write out the prompt'
     echo -n "$suffix "
 end
 
-function fish_right_prompt -d "Write out the right prompt"
-    set_color $fish_color_cwd
-    set -l git_branch (git branch 2> /dev/null | sed -n '/\* /s///p')
-    set -l local_date (date '+%d.%m.%y•%H:%M:%S')
-    if test -n "$git_branch"
-      # set delimiter ', '
-      set delimiter ''
-    else
-      set delimiter ''
-    end
-    # printf '[%s%s%s]' $local_date $delimiter $git_branch
-    printf '%s%s' $delimiter $git_branch
-end
-set -g fish_user_paths "/opt/homebrew/opt/ruby/bin" $fish_user_paths
+# function fish_right_prompt -d "Write out the right prompt"
+#     set_color $fish_color_cwd
+#     set -l git_branch (git branch 2> /dev/null | sed -n '/\* /s///p')
+#     set -l local_date (date '+%d.%m.%y•%H:%M:%S')
+#     if test -n "$git_branch"
+#       # set delimiter ', '
+#       set delimiter ''
+#     else
+#       set delimiter ''
+#     end
+#     # printf '[%s%s%s]' $local_date $delimiter $git_branch
+#     printf '%s%s' $delimiter $git_branch
+# end
+set -g fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/den/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/den/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/den/Downloads/google-cloud-sdk/path.fish.inc' ]
+    . '/Users/den/Downloads/google-cloud-sdk/path.fish.inc'
+end
+
+if set -q VIRTUAL_ENV
+    echo -n -s (set_color -b blue black) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+end

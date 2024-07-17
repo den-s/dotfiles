@@ -3,12 +3,10 @@ git checkout
 
 echo -n 'remove old configs...'
 rm -rf ~/.config/nvim
-rm -rf ~/.vim
-rm ~/.vimrc
 rm ~/.tmux.conf
-rm ~/.config/alacritty/alacritty.yml
-rm ~/.config/fish/config.fish
-rm ~/.config/kitty/kitty.conf
+rm -rf ~/.config/alacritty
+rm -rf ~/.config/fish
+rm -rf ~/.config/kitty
 echo ' done'
 
 echo 'create symlinks'
@@ -17,20 +15,16 @@ echo 'create symlinks'
 ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # Fishell config
-ln -s ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -s ~/dotfiles/fish ~/.config/fish
 
 # Alacritty config
-mkdir -p ~/.config/alacritty/
-ln -s ~/dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -s ~/dotfiles/alacritty ~/.config/alacritty
 
 # kitty config
-mkdir -p ~/.config/kitty/
-ln -s ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -s ~/dotfiles/kitty ~/.config/kitty
 
 # VIM config
 ln -s ~/dotfiles/vim ~/.config/nvim
-ln -s ~/dotfiles/vim ~/.vim
-ln -s ~/dotfiles/vim/init.vim ~/.vimrc
 
 vim +PlugInstall +qall
 
