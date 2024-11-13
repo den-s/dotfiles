@@ -1,0 +1,9 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
+  "nvim-dap": { "branch": "master", "commit": "281a2e4cd1e7a17cea7ecb1745d84a8ab1249925" },
+  "nvim-dap-python": { "branch": "master", "commit": "d777c2b32ed39f61209c09bede28d7491621a631" },
+  "nvim-lspconfig": { "branch": "master", "commit": "d4814330b207a4e05ba9515e453b0e87f20357ec" },
+  "plenary.nvim": { "branch": "master", "commit": "ec289423a1693aeae6cd0d503bac2856af74edaa" },
+  "telescope.nvim": { "branch": "master", "commit": "5972437de807c3bc101565175da66a1aa4f8707a" },
+  "venv-selector.nvim": { "branch": "main", "commit": "f16c25bf16ac6e8bbdbcc9e9b3a1a00729d00c99" }
+}

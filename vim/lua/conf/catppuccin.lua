@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 catppuccin.setup({
-    transparent_background = true,
+    transparent_background = false,
     integrations = {
       nvimtree = {
         show_root = true,
@@ -17,5 +17,5 @@ catppuccin.setup({
     }
 })
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 catppuccin.load()

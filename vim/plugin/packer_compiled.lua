@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/den/.cache/nvim/packer_hererocks/2.1.1703358377/share/lua/5.1/?.lua;/Users/den/.cache/nvim/packer_hererocks/2.1.1703358377/share/lua/5.1/?/init.lua;/Users/den/.cache/nvim/packer_hererocks/2.1.1703358377/lib/luarocks/rocks-5.1/?.lua;/Users/den/.cache/nvim/packer_hererocks/2.1.1703358377/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/den/.cache/nvim/packer_hererocks/2.1.1703358377/lib/lua/5.1/?.so"
+local package_path_str = "/Users/den/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/Users/den/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/Users/den/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/Users/den/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/den/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -145,6 +145,11 @@ _G.packer_plugins = {
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
   },
+  ["kanagawa.nvim"] = {
+    loaded = true,
+    path = "/Users/den/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -165,15 +170,15 @@ _G.packer_plugins = {
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["no-neck-pain.nvim"] = {
-    loaded = true,
-    path = "/Users/den/.local/share/nvim/site/pack/packer/start/no-neck-pain.nvim",
-    url = "https://github.com/shortcuts/no-neck-pain.nvim"
-  },
   ["nord.nvim"] = {
     loaded = true,
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
+  },
+  ["nordic.nvim"] = {
+    loaded = true,
+    path = "/Users/den/.local/share/nvim/site/pack/packer/start/nordic.nvim",
+    url = "https://github.com/AlexvZyl/nordic.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -215,6 +220,11 @@ _G.packer_plugins = {
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
     url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/den/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
   ["onedarkpro.nvim"] = {
     loaded = true,
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
@@ -255,20 +265,15 @@ _G.packer_plugins = {
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
-  ultisnips = {
+  ["venv-selector.nvim"] = {
     loaded = true,
-    path = "/Users/den/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
+    path = "/Users/den/.local/share/nvim/site/pack/packer/start/venv-selector.nvim",
+    url = "https://github.com/linux-cultist/venv-selector.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/den/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-repeat"] = {
-    loaded = true,
-    path = "/Users/den/.local/share/nvim/site/pack/packer/start/vim-repeat",
-    url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-rest-console"] = {
     loaded = true,

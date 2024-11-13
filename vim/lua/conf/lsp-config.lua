@@ -5,10 +5,12 @@ end
 
 lsp.preset('recommended')
 
+
 lsp.ensure_installed({
-  'tsserver',
-  'pyright'
+  -- 'tsserver',
+  -- 'pylsp'
 })
+
 
 lsp.set_preferences({
   suggest_lsp_servers = true,
@@ -20,11 +22,22 @@ lsp.set_preferences({
   call_servers = 'local',
   sign_icons = {
     error = '✘',
-    warn = '▲',
+    warn = '',
     hint = '⚑',
     info = ''
   },
 })
+
+-- local handler = vim.lsp.with(
+--     vim.lsp.handlers.location, {
+--       location_callback = function(location)
+--         vim.cmd [[vsplit]]
+--         vim.lsp.util.jump_to_location(location)
+--       end
+--     }
+--
+--   local params = vim.lsp.util.make_position_params()
+--   vim.lsp.buf_request(0, 'textDocument/definition', params, handler)
 
 local function goto_definition(split_cmd)
   local util = vim.lsp.util
@@ -62,6 +75,9 @@ local function open_definition_newtab ()
   vim.lsp.buf_request(0, 'textDocument/definition', params, handler)
 end
 
+local themeColor = 'dark'
+
+
 lsp.on_attach(function (client, bufnr)
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition() end, opts)
@@ -77,6 +93,8 @@ lsp.on_attach(function (client, bufnr)
   vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set('n', '<leader>af', function() vim.lsp.buf.formatting() end, opts)
-end)
+end
+)
 
+-- pylsp.plugins.rope_autoimport.enabled
 lsp.setup()

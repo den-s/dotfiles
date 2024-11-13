@@ -39,7 +39,6 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'F',     api.live_filter.clear,                 opts('Clean Filter'))
   vim.keymap.set('n', 'f',     api.live_filter.start,                 opts('Filter'))
   vim.keymap.set('n', 'g?',    api.tree.toggle_help,                  opts('Help'))
-  vim.keymap.set('n', 'gy',    api.fs.copy.absolute_path,             opts('Copy Absolute Path'))
   vim.keymap.set('n', 'H',     api.tree.toggle_hidden_filter,         opts('Toggle Dotfiles'))
   vim.keymap.set('n', 'I',     api.tree.toggle_gitignore_filter,      opts('Toggle Git Ignore'))
   vim.keymap.set('n', 'J',     api.node.navigate.sibling.last,        opts('Last Sibling'))
@@ -58,7 +57,8 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'W',     api.tree.collapse_all,                 opts('Collapse'))
   vim.keymap.set('n', 'x',     api.fs.cut,                            opts('Cut'))
   vim.keymap.set('n', 'y',     api.fs.copy.filename,                  opts('Copy Name'))
-  vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
+  vim.keymap.set('n', 'yr',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
+  vim.keymap.set('n', 'yp',    api.fs.copy.absolute_path,             opts('Copy Absolute Path'))
   vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
   vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
   -- END_DEFAULT_ON_ATTACH
@@ -70,7 +70,6 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
-  vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
 
 end
 
@@ -94,12 +93,12 @@ nvim_tree.setup {
   update_cwd = true,
   diagnostics = {
     enable = true,
-    -- icons = {
-    --   hint = "󰌶",
-    --   info = "",
-    --   warning = "󰀪",
-    --   error = "󰅚",
-    -- },
+    icons = {
+      error = '✘',
+      warning = '▲',
+      hint = '⚑',
+      info = '',
+    },
   },
   update_focused_file = {
     enable = true,

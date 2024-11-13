@@ -9,6 +9,8 @@ return require('packer').startup(function(use)
   use { 'shaunsingh/nord.nvim' }
   use { "olimorris/onedarkpro.nvim" }
   use { "folke/tokyonight.nvim" }
+  use { 'AlexvZyl/nordic.nvim' }
+  use { "rebelot/kanagawa.nvim" }
 
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim' }
@@ -23,9 +25,9 @@ return require('packer').startup(function(use)
   use { 'mileszs/ack.vim' }
   use { 'diepm/vim-rest-console' }
   use { 'windwp/nvim-autopairs' }
-  use { 'SirVer/ultisnips' }
+  -- use { 'SirVer/ultisnips' }
   --[[ use { 'vim-scripts/indentpython.vim' } ]]
-  use { 'tpope/vim-repeat' }
+  -- use { 'tpope/vim-repeat' }
   use { 'nvim-lua/popup.nvim' }
   use { 'nvim-lua/plenary.nvim' }
   use { 'nvim-telescope/telescope.nvim' }
@@ -62,9 +64,9 @@ return require('packer').startup(function(use)
       -- {'rafamadriz/friendly-snippets'},
     }
   }
-  use {"shortcuts/no-neck-pain.nvim", tag = "*" }
+  -- use {"shortcuts/no-neck-pain.nvim", tag = "*" }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use ('nvim-treesitter/playground')
+  use {'nvim-treesitter/playground'}
   use {
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
@@ -78,5 +80,13 @@ return require('packer').startup(function(use)
     branch = "harpoon2",
     requires = { {"nvim-lua/plenary.nvim"} }
   }
-  use 'nvim-tree/nvim-web-devicons'
+  use {'nvim-tree/nvim-web-devicons'}
+  use {'https://github.com/linux-cultist/venv-selector.nvim'}
+
+  use {
+  'rmagatti/goto-preview',
+  config = function()
+    require('goto-preview').setup {}
+  end
+}
 end)

@@ -1,13 +1,15 @@
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
+set textwidth=119
 set expandtab
 set autoindent
 set foldmethod=indent
-set colorcolumn=80
+set colorcolumn=120
 
 let NERDSpaceDelims = 0
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+let cch = synIDattr(synIDtrans(hlID("ColorColumn")), "bg#")
+
+" highlight OverLength ctermbg=cch ctermfg=white guibg=cch
+match ColorColumn /\%121v.\+/

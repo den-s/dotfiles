@@ -27,16 +27,20 @@ null_ls.setup({
 	debug = true,
   root_dir = nls_utils.root_pattern ".git",
 	sources = {
+    -- it's working
     formatting.prettierd,
     formatting.fish_indent,
-    formatting.fixjson,
-    formatting.black,
+    formatting.ruff,
+    diagnostics.ruff,
+    -- formatting.pyflyby,
+    -- formatting.black.with({ extra_args = { "--fast" } }),
     -- formatting.isort,
     -- diagnostics.flake8,
-    -- diagnostics.pylint,
+    -- it's not
+    formatting.fixjson,
     diagnostics.eslint_d,
-    --[[ diagnostics.eslint_d.with({ "--cache", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" }), ]]
     diagnostics.jsonlint,
+    code_actions.eslint_d
 	},
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

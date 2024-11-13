@@ -15,14 +15,14 @@ local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
-	-- symbols = { error = "󰅚", warn = "󰀪" },
+	symbols = { error = "✘ ", warn = "" },
 	update_in_insert = false,
   cond = hide_in_width,
 }
 
 local diff = {
 	"diff",
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+	symbols = { added = "+ ", modified = "~ ", removed = "- " }, -- changes diff symbols
   cond = hide_in_width,
   colored = false
 }
@@ -37,15 +37,15 @@ local mode = {
 
 local filetype = {
 	"filetype",
-	icons_enabled = false,
-	icon = nil,
+	icons_enabled = true,
+	-- icon = nil,
   cond = hide_in_width,
 }
 
 local branch = {
 	"branch",
 	icons_enabled = true,
-  icon = "",
+	icon = "",
   fmt = function(str)
     local result = str
 
@@ -95,7 +95,7 @@ local fileformat = {
 
 lualine.setup({
   options = {
-    theme = "catppuccin",
+    theme = "kanagawa",
     icons_enabled = true,
     component_separators = { left = "", right = "" },
     section_separators = { left = '', right = '' },
