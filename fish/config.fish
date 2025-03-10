@@ -22,6 +22,10 @@ set -gx EDITOR nvim
 # set -x JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
 set -x JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-13.jdk/Contents/Home
 set -x DJANGO_DEVELOPMENT true
+set -x TERM xterm-256color
+
+set -x BW_CLIENTID user.4bb95ddb-0809-40bd-951b-afee012b5e9e
+set -x BW_CLIENTSECRET nn9Ea1yZCDxfxSPN9pcmy2gWtOLzrn
 
 set -x LFLAGS /opt/homebrew/lib/
 # set -x CFLAGS = -g -Wall -Wextra -pedantic -Werror -target x86_64-apple-darwin20.3.0
@@ -42,6 +46,8 @@ set PATH $PATH $JAVA_HOME
 set PATH $PATH /opt/homebrew/Cellar/maven/3.8.5/libexec
 set PATH $PATH /Users/den/.local/share/nvim/mason/bin
 set PATH $PATH /Users/den/.docker/cli-plugins/
+set PATH $PATH /usr/local/opt/libpq/bin
+set _OLD_VIRTUAL_PATH "$PATH"
 
 # export NVM_DIR="$HOME/.nvm"
 #   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm

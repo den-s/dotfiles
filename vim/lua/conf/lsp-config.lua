@@ -1,32 +1,25 @@
-local lspconfig_ok, lsp = pcall(require, "lsp-zero")
-if not lspconfig_ok then
-  return
-end
+-- local lspconfig_ok, lsp = pcall(require, "lsp-zero")
+-- if not lspconfig_ok then
+--   return
+-- end
 
-lsp.preset('recommended')
-
-
-lsp.ensure_installed({
-  -- 'tsserver',
-  -- 'pylsp'
-})
-
-
-lsp.set_preferences({
-  suggest_lsp_servers = true,
-  setup_servers_on_start = true,
-  set_lsp_keymaps = false,
-  configure_diagnostics = true,
-  cmp_capabilities = false,
-  manage_nvim_cmp = false,
-  call_servers = 'local',
-  sign_icons = {
-    error = '✘',
-    warn = '',
-    hint = '⚑',
-    info = ''
-  },
-})
+-- lsp.preset('recommended')
+--
+-- lsp.set_preferences({
+--   suggest_lsp_servers = true,
+--   setup_servers_on_start = true,
+--   set_lsp_keymaps = false,
+--   configure_diagnostics = true,
+--   cmp_capabilities = false,
+--   manage_nvim_cmp = false,
+--   call_servers = 'local',
+--   sign_icons = {
+--     error = '✘',
+--     warn = '',
+--     hint = '⚑',
+--     info = ''
+--   },
+-- })
 
 -- local handler = vim.lsp.with(
 --     vim.lsp.handlers.location, {
@@ -39,7 +32,7 @@ lsp.set_preferences({
 --   local params = vim.lsp.util.make_position_params()
 --   vim.lsp.buf_request(0, 'textDocument/definition', params, handler)
 
-local function goto_definition(split_cmd)
+--[[ local function goto_definition(split_cmd)
   local util = vim.lsp.util
   local log = require("vim.lsp.log")
 
@@ -73,12 +66,9 @@ local function open_definition_newtab ()
   local handler = goto_definition('tab split')
   local params = vim.lsp.util.make_position_params()
   vim.lsp.buf_request(0, 'textDocument/definition', params, handler)
-end
+end ]]
 
-local themeColor = 'dark'
-
-
-lsp.on_attach(function (client, bufnr)
+--[[ lsp.on_attach(function (client, bufnr)
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition() end, opts)
   vim.keymap.set('n', 'gdv', function () open_definition_vsplit() end, opts)
@@ -94,7 +84,6 @@ lsp.on_attach(function (client, bufnr)
   vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set('n', '<leader>af', function() vim.lsp.buf.formatting() end, opts)
 end
-)
+) ]]
 
--- pylsp.plugins.rope_autoimport.enabled
-lsp.setup()
+-- lsp.setup()

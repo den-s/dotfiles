@@ -24,6 +24,7 @@ ls.filetype_extend("typescriptreact", {"reactjs", "javascript", "reactnative"})
 ls.filetype_extend("javascriptreact", {"reactjs", "javascript", "reactnative"})
 ls.filetype_extend("typescript", {"javascript", "reactnative"})
 ls.filetype_extend("javascript", {"javascript"})
+ls.filetype_extend("htmldjango", {"javascript"})
 ls.filetype_extend("python", {"python", "python_django"})
 
 local opts = { silent = true }
