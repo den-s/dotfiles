@@ -1,14 +1,14 @@
 return {
   {
     "zbirenbaum/copilot-cmp",
-    enabled = false,
+    -- enabled = false,
     config = function()
       require("copilot_cmp").setup()
     end,
   },
   {
     "zbirenbaum/copilot.lua",
-    enabled = false,
+    -- enabled = false,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()

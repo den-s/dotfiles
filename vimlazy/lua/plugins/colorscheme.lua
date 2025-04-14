@@ -18,9 +18,9 @@ return {
           return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
         end
         return {
-          -- NormalFloat                = { bg = "none" },
-          -- FloatBorder                = { bg = "none" },
-          -- FloatTitle                 = { bg = "none" },
+          NormalFloat                = { bg = "none" },
+          FloatBorder                = { bg = "none" },
+          FloatTitle                 = { bg = "none" },
 
           -- Save an hlgroup with dark background and dimmed foreground
           -- so that you can use it where your still want darker windows.
@@ -33,13 +33,14 @@ return {
           MasonNormal                = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
           TelescopeTitle             = { fg = theme.ui.special, bold = true },
+          TelescopePreviewNormal            = { fg = theme.ui.special, bg = theme.ui.bg_p1 },
           TelescopePromptNormal      = { bg = theme.ui.bg_p1 },
           TelescopePromptBorder      = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
           TelescopeResultsBorder     = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
           TelescopePreviewBorder     = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
           TelescopeResultsNormal     = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
           -- TelescopePreviewNormal     = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-          TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+          -- TelescopePreviewNormal = { bg = theme.ui.bg_dim },
 
           Pmenu                      = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
           PmenuSel                   = { fg = "NONE", bg = theme.ui.bg_p2 },

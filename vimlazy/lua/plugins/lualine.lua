@@ -44,26 +44,29 @@ local tabs = {
   "tabs",
   -- mode=1,
 
-  show_modified_status = true,  -- Shows a symbol next to the tab name if the file has been modified.
+  show_modified_status = false,  -- Shows a symbol next to the tab name if the file has been modified.
 
-  -- use_mode_colors = false,
+  -- use_mode_colors = true,
+  -- symbols = {
+  --   modified = ' ●',  -- Text to show when the file is modified.
+  -- },
+  mode = 0,
+}
+
+local lsp_status = {
+  'lsp_status',
+  cond = hide_in_width,
+  icon = ' ', -- f013
   symbols = {
-    modified = ' ●',  -- Text to show when the file is modified.
+    -- Standard unicode symbols to cycle through for LSP progress:
+    spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+    -- Standard unicode symbol for when LSP is done:
+    done = '✓',
+    -- Delimiter inserted between LSP names:
+    separator = ' ',
   },
-
-  mode = 1,
-
-  -- fmt = function(name, context)
-  --   -- Show + if buffer is modified in tab
-  --   local buflist = vim.fn.tabpagebuflist(context.tabnr)
-  --   local winnr = vim.fn.tabpagewinnr(context.tabnr)
-  --   local bufnr = buflist[winnr]
-  --   local mod = vim.fn.getbufvar(bufnr, '&mod')
-  --
-  --   return name
-  -- end,
-
-  -- cond = hide_in_width,
+  -- List of LSP names to ignore (e.g., `null-ls`):
+  ignore_lsp = {'copilot'},
 }
 
 local filetype = {
@@ -174,10 +177,10 @@ return {
     sections = {
       lualine_a = { mode },
       lualine_b = { branch, diff },
-      lualine_c = { filetype_icon, tabs },
+      lualine_c = { filetype_icon, filename },
       -- lualine_x = { "encoding", "fileformat", "filetype" },
-      lualine_x = { is_format, diagnostics },
-      lualine_y = { filetype },
+      lualine_x = { is_format, diagnostics, filetype },
+      lualine_y = { tabs },
       lualine_z = { location, progress },
     },
     inactive_sections = {

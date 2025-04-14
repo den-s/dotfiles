@@ -43,6 +43,7 @@ end, {
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
+  enabled = false,
   keys = {
     {
       -- Customize or remove this keymap to your liking
